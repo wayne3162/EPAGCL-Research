@@ -25,10 +25,12 @@ LEGACY_NAMES = {'args.txt', 'result.txt', 'loss.txt', 'eval.txt'}
 def regular_files(directory):
     for base, dirs, files in os.walk(directory, followlinks=False):
         dirs[:] = sorted(d for d in dirs if d not in {'.git', '.venv', '__pycache__'}
+                         and not re.fullmatch(r'(?:logs?|.*_logs?)', d, re.I)
                          and not (Path(base) / d).is_symlink())
         for name in sorted(files):
             p = Path(base) / name
-            if p.is_file() and not p.is_symlink():
+            if (p.is_file() and not p.is_symlink()
+                    and not re.search(r'\.log(?:\.[^/]*)?$', name, re.I)):
                 yield p
 
 
@@ -65,7 +67,7 @@ def main():
     if not all((root / n).is_file() for n in ('main.py', 'Model.py', 'Augmentation.py')):
         parser.error('Not an EPAGCL project root: ' + str(root))
     sources = {
-        'A_variance_regularization': root / 'extension_experiments/outputs',
+        'A_variance_regularization': root / 'extension_experiments/formal_A/outputs',
         'B_computational_efficiency': root / 'extension_experiments/efficiency_B/outputs',
         'C_reverse_edge_dropping/training': root / 'extension_experiments/reverse_drop_C/outputs',
         'C_reverse_edge_dropping/epr_analysis': root / 'extension_experiments/reverse_drop_C/epr_outputs',

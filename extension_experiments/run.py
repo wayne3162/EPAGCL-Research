@@ -4,7 +4,7 @@ Run from the EPAGCL repository root:
     python extension_experiments/run.py --method baseline --epoch 20 --eval 10 --eval-epoch 30
 
 Only reads original Model, Augmentation, Load_data, and Utils modules.
-All new outputs are stored below extension_experiments/outputs.
+All new outputs are stored below extension_experiments/formal_A/outputs.
 """
 
 from __future__ import annotations
@@ -273,7 +273,7 @@ def main() -> None:
         raise FileNotFoundError(f"Dataset parent directory does not exist: {dataset_path.parent}")
     # Do not modify the historical trained_models directory.
     experiment_id = datetime.now().strftime("%Y%m%d_%H%M%S_%f") + "_" + args.method + "_" + args.dataset
-    experiment_dir = EXPERIMENT_ROOT / "outputs" / experiment_id
+    experiment_dir = EXPERIMENT_ROOT / "formal_A" / "outputs" / experiment_id
     experiment_dir.mkdir(parents=True, exist_ok=False)
     config = dict(vars(args))
     config.update({"dataset_path_resolved": str(dataset_path), "project_root": str(REPO_ROOT)})

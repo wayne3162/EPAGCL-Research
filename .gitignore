@@ -99,3 +99,14 @@ __pycache__/
 *.pth
 *.ckpt
 *.safetensors
+
+# Keep all log directories and log files local
+[Ll][Oo][Gg]/
+[Ll][Oo][Gg][Ss]/
+*_[Ll][Oo][Gg]/
+*_[Ll][Oo][Gg][Ss]/
+*.[Ll][Oo][Gg]
+*.[Ll][Oo][Gg].*
+
+# Experiment A raw outputs
+/extension_experiments/formal_A/outputs/

@@ -91,7 +91,7 @@ EPAGCL 以錯誤傳播率（Error Passing Rate, EPR）分析圖結構與訊息�
 
 Q3 中 Amazon-Photo 的 AddOnly 結果明顯較低，Coauthor-Phy 則出現多組不穩定的分類結果。Coauthor-Phy 的 EPAGCL 五次實驗中，有三次約 50.7–50.8%，其餘兩次約 94%。這些現象構成後續研究表示崩潰的動機，但僅憑分類準確率不足以確定崩潰原因。
 
-原始依據：[research_results/q3_ablation/](research_results/q3_ablation/) 內的 `args.txt`、`result.txt`、`loss.txt`、`eval.txt`。各資料集的歷史程式補丁與基礎版本保留在根目錄 `EPAGCL_Q3_Cora_changes.patch` 及 [logs/](logs/)；執行腳本為 `run_amazon_photo_q3_all.sh`、`run_coauthor_phy_q3_all.sh`、`run_wikics_q3_all.sh`。歷史腳本可能含本機路徑與舊版設定，執行前需對照補丁與參數。
+原始依據：[research_results/q3_ablation/](research_results/q3_ablation/) 內的 `args.txt`、`result.txt`、`loss.txt`、`eval.txt`。各資料集的歷史程式補丁與基礎版本保留在根目錄 `EPAGCL_Q3_Cora_changes.patch` 及 `logs/` (local only)；執行腳本為 `run_amazon_photo_q3_all.sh`、`run_coauthor_phy_q3_all.sh`、`run_wikics_q3_all.sh`。歷史腳本可能含本機路徑與舊版設定，執行前需對照補丁與參數。
 
 **評估口徑：** 原版重現與 Q3 沿用歷史評估紀錄；A、B、C 使用新的固定切分與驗證集選擇流程。兩者不可直接混合計算方法改善幅度。
 
@@ -242,8 +242,6 @@ Cora，500 Epoch、五組配對種子 20261119–20261123，每 50 Epoch 評估�
 `epagcl_predict_nodes.py` 以訓練好的本機模型權重為輸入，凍結編碼器並在原始圖計算嵌入，再以訓練節點的表示與標籤訓練線性分類器。驗證集用於模型選擇，最後才評估測試集，輸出節點真實類別、預測類別、正確性與 softmax 信心分數。這是傳導式（Transductive）節點分類設定，不等於在訓練分類器時使用測試節點標籤。可選擇原始特徵的線性分類作為對照。
 
 - [EPAGCL_prediction_test_README.md](EPAGCL_prediction_test_README.md)：預測流程、參數及輸出格式。
-- [cora_explore/](cora_explore/)：局部鄰域、特徵矩陣與 PCA（主成分分析）。
-- [cora_trace/](cora_trace/)：原始特徵與訓練後嵌入的 t-SNE、混淆矩陣、類別機率及節點中間層表示等既有圖表。
 - [figure3_output/](figure3_output/)：Cora、CiteSeer 的本機 t-SNE 圖形。
 
 此處保留已生成的圖表與紀錄；尚未重新核對所有視覺化圖表與模型權重的對應，故不從圖表額外宣稱新的分類成效。模型權重未納入儲存庫，預測工具必須使用自行訓練或經授權取得的權重。
@@ -313,7 +311,9 @@ EPAGCL/
 │   ├── fixed_eval.py
 │   ├── vr_regularization.py
 │   ├── tests/
-│   ├── formal_A/                      # 正式實驗腳本與雜湊資訊
+│   ├── formal_A/                      # A 正式實驗腳本與雜湊資訊
+│   │   ├── outputs/                  # A 原始輸出，僅本機
+│   │   └── logs/                     # 訓練日誌，僅本機
 │   ├── efficiency_B/                  # B
 │   ├── reverse_drop_C/                # C
 │   └── splits/                        # 切分檔案僅本機（不提交 .pt）
@@ -327,14 +327,13 @@ EPAGCL/
 │   │   └── epr_analysis/
 │   └── manifest.csv
 ├── scripts/export_epagcl_results.py   # 研究結果匯出工具
-├── cora_explore/ / cora_trace/ / figure3_output/
-├── midterm_audit/                     # 研究診斷紀錄
-└── logs/                              # 僅提交補丁與版本資訊等精選檔案
+├── figure3_output/
+└── logs/                              # 全部僅本機，不提交
 ```
 
-`research_results/` 的首次整理包含 689 個輕量實驗檔案及一份 [`manifest.csv`](research_results/manifest.csv)，共 690 個檔案。原版重現三組、Q3 二十三組五次重複實驗全部保留；A、B、C 保留正式結果及前期探索、測速與診斷紀錄，不以準確率高低選擇結果。
+`research_results/` 的首次整理包含 689 個輕量實驗檔案。排除 log 目錄中的 2 個檔案後，目前 Git 版本保留 687 個實驗檔案及一份 [`manifest.csv`](research_results/manifest.csv)，共 688 個檔案。A 實驗原始輸出統一位於 `extension_experiments/formal_A/outputs/`；manifest 的 A 來源路徑同步更新，原始結果內容及 SHA-256 不變。原版重現三組、Q3 二十三組五次重複實驗全部保留；A、B、C 保留正式結果及前期探索、測速與診斷紀錄，不以準確率高低選擇結果。
 
-`manifest.csv` 記錄來源路徑、匯出路徑、檔案大小及 SHA-256 內容雜湊值；匯出只複製資料，不修改原始紀錄，並將歷史資料夾名稱中的冒號轉為連字號以相容 Windows。完整 `trained_models/`、原始實驗 `outputs/`、大量訓練 Log、模型權重、切分張量、壓縮檔、虛擬環境與快取保留在本機，由 `.gitignore` 排除。ZIP 不作為重複的研究資料來源。
+`manifest.csv` 記錄來源路徑、匯出路徑、檔案大小及 SHA-256 內容雜湊值；匯出只複製資料，不修改原始紀錄，並將歷史資料夾名稱中的冒號轉為連字號以相容 Windows。完整 `trained_models/`、原始實驗 `outputs/`、所有 log 目錄及 .log 檔案、模型權重、切分張量、壓縮檔、虛擬環境與快取保留在本機，由 `.gitignore` 排除。ZIP 不作為重複的研究資料來源。
 
 對保有完整原始輸出的本機專案，可使用下列指令檢查匯出計畫（僅預覽，不複製）：
 

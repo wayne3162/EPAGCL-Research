@@ -16,14 +16,14 @@ EPAGCL/
     vr_regularization.py
     tests/
     splits/
-    outputs/
+    formal_A/outputs/
 ```
 
 The runner imports the original `Model.py`, `Augmentation.py`, `Load_data.py`,
 and `Utils.py` directly, without editing or copying them. It never imports the
 original `Arguments.py` (which has immediate folder-writing side effects) or
 original `Linear_evaluation.py` (which selects checkpoints using test labels).
-New results are ONLY written to `extension_experiments/outputs/` and splits to
+New results are ONLY written to `extension_experiments/formal_A/outputs/` and splits to
 `extension_experiments/splits/`. Pre-existing dataset caches are read through
 the same `Load_data.py` API used by the original script.
 
