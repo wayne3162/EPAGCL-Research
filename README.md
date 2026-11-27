@@ -1,5 +1,7 @@
 # EPAGCL：論文重現與延伸研究
 
+延伸實驗雙語說明：[繁體中文](extension_experiments/README.md) · [English](extension_experiments/README.en.md)
+
 本專案以 AAAI 2025 論文 **Why Does Dropping Edges Usually Outperform Adding Edges in Graph Contrastive Learning?** 的 EPAGCL（Error-PAssing-based Graph Contrastive Learning，錯誤傳播率導向的圖對比學習）為研究基礎。
 
 研究目標是重現原作者的方法與部分實驗，分析圖增強（Graph Augmentation）策略的影響，並從表示學習穩定性、運算效率及圖結構擾動三個方向進行延伸。此儲存庫記錄本機實驗成果，而非原作者發布的新版本；A、B、C 是各有比較基準的研究實驗，尚未整合為單一新模型。
@@ -138,7 +140,7 @@ Coauthor-Phy，五組配對種子 20261123–20261127，1000 Epoch，每 50 Epoc
 
 VR 的平均分類準確率增加 34.898 個百分點（percentage points, pp），完整訓練平均時間增加約 0.8%。Baseline 有四組同時呈現低分類準確率、極低特徵標準差與接近 1 的餘弦相似度；VR 五組均未呈現此組合。這支持 VR 在此設定下緩解近似表示崩潰的效果，尚不代表所有資料集或參數皆有相同改善。
 
-來源：[research_results/A_variance_regularization/](research_results/A_variance_regularization/)；正式結果由五組 Baseline 及五組 VR 的 `final.json` 計算，其他探索結果也保留，但不納入上述正式統計。詳細設計：[extension_experiments/README.md](extension_experiments/README.md)。
+來源：[research_results/A_variance_regularization/](research_results/A_variance_regularization/)；正式結果由五組 Baseline 及五組 VR 的 `final.json` 計算，其他探索結果也保留，但不納入上述正式統計。詳細設計：[實驗 A](extension_experiments/formal_A/README.md)。
 
 ## 5. 實驗 B：對比損失計算效率
 
@@ -187,7 +189,7 @@ Coauthor-Phy，五組配對種子 20261129–20261203，維持 A 的 VR 設定�
 
 B2×8 的完整訓練時間減少約 38.89%，平均測試準確率差異為 −0.072 pp，但樣本標準差增加，且其中一個種子的準確率下降約 1.82 pp。因此本實驗顯示效率改善與接近的平均分類表現，不主張完整訓練品質、穩定性或數值結果完全等價。短期測速的 4.40 倍與完整訓練的 1.637 倍為不同測量範圍，不可混用。
 
-來源：[research_results/B_computational_efficiency/](research_results/B_computational_efficiency/)，正式統計只使用頂層十個 `*_E3_formal_*` 實驗的 `final.json`，不混入同種子重播與診斷結果。詳細執行計畫與說明見 [EXPERIMENT_PLAN.md](extension_experiments/efficiency_B/EXPERIMENT_PLAN.md)、[README_E3_zh_TW.txt](extension_experiments/efficiency_B/README_E3_zh_TW.txt) 及 [README_E3_extra_2seeds_zh_TW.txt](extension_experiments/efficiency_B/README_E3_extra_2seeds_zh_TW.txt)。
+來源：[research_results/B_computational_efficiency/](research_results/B_computational_efficiency/)，正式統計只使用頂層十個 `*_E3_formal_*` 實驗的 `final.json`，不混入同種子重播與診斷結果。詳細執行計畫與說明見 [EXPERIMENT_PLAN.md](extension_experiments/efficiency_B/EXPERIMENT_PLAN.md)、[README_E3.md](extension_experiments/efficiency_B/README_E3.md) 及 [README_E3_extra_2seeds.md](extension_experiments/efficiency_B/README_E3_extra_2seeds.md)。
 
 ## 6. 實驗 C：反向刪邊與離線 EPR 分析
 
