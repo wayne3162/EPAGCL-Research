@@ -1,0 +1,2 @@
+encoder_epoch,best_probe_epoch,validation_accuracy,is_best,elapsed_seconds
+20,1,50.275439,1,1343.60

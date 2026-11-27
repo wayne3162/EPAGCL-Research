@@ -1,0 +1,9 @@
+phase,mean_seconds_3_samples,pct_of_diagnostic_phases
+1_graph_augmentation,3.850584,57.21
+2_GCN_projection_view_1,0.599282,8.90
+3_GCN_projection_view_2,0.355315,5.28
+4_contrastive_loss,0.396452,5.89
+5_variance_penalty,0.000467,0.01
+6_backward,1.527251,22.69
+7_optimizer_update,0.001534,0.02
+8_scalar_logging,0.000233,0.00

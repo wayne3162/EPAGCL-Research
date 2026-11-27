@@ -1,0 +1,32 @@
+{
+  "variant": "b0",
+  "seed": 20261128,
+  "steps": 20,
+  "dataset": "Coauthor-Phy",
+  "gpu_name": "NVIDIA GeForce RTX 2070",
+  "torch_version": "2.3.0+cu121",
+  "preprocessing_seconds_excluded": 19.617358108982444,
+  "stage_medians_seconds": {
+    "setup": 0.00025859999004751444,
+    "graph_augmentation": 0.4141964580048807,
+    "GCN_view_1": 0.6098900334909558,
+    "GCN_view_2": 0.48558322293683887,
+    "contrastive_loss": 0.23649858048884198,
+    "variance_penalty": 0.00046479993034154177,
+    "backward": 1.8286358843906783,
+    "optimizer": 0.0015183005016297102,
+    "scalar_logging": 0.00021400052355602384
+  },
+  "peak_allocated_memory_mib": 5785.83251953125,
+  "source_sha256": {
+    "Model.py": "66bf131decb3b6cc527c92209dcb4a55d38648ea55ca7e6ac4cf70b1f316c033",
+    "Augmentation.py": "a880882304d3fb6ea80781b3c116e669a4581562210e0ef756c463cff26ba787",
+    "extension_experiments/run.py": "494edbd05616ee58fc4aff7a741eb75e072e03ec12b8ddf88c2c85d32581de75",
+    "extension_experiments/efficiency_B/model_b1.py": "d53ce118759c4761ff03f54960cd316045a661d96294d87ff79727aaa2b72dab",
+    "extension_experiments/efficiency_B/model_b2.py": "e759db29243e26ba6bc5e22cfe85bc8fac98ec93edc63af72d9f27ef1d24d368",
+    "extension_experiments/efficiency_B/diagnose_e3_phases.py": "b0ec6acdef11ea0a909997b60f4eedc29d3a872b8dca7d3e85429e8c7bb309ee"
+  },
+  "note": "Extra CUDA synchronize calls BETWEEN stages; for bottleneck localization only, not B0/B2 speed comparison.",
+  "has_linear_evaluation": false,
+  "uses_test_labels": false
+}

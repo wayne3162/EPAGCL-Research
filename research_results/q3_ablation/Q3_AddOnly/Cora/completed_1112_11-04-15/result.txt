@@ -1,0 +1,7 @@
+dataset: Cora
+drop edge: False
+add edge: True
+add edge for single graph: True
+drop feature randomly: True
+[78.04428044 80.67343173 80.16605166 80.58118081 80.1199262 ]
+mean:79.92, std:0.96

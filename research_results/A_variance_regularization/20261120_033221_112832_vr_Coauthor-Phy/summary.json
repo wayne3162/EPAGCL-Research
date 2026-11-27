@@ -1,0 +1,14 @@
+{
+  "method": "vr",
+  "dataset": "Coauthor-Phy",
+  "runs": 1,
+  "test_mean_pct": 93.56767535209656,
+  "test_std_pct_population": 0.0,
+  "test_values_pct": [
+    93.56767535209656
+  ],
+  "preprocessing_seconds": 18.14669899106957,
+  "total_run_seconds_excluding_preprocessing": 3528.7532726670615,
+  "evaluation_policy": "fixed split per seed; validation-only checkpoint selection; test once at end",
+  "early_stop_policy": "shadow/monitoring only; no training was stopped"
+}

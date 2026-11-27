@@ -1,0 +1,41 @@
+正式結果：trained_models/Q3_AddOnly/Amazon-Photo/completed_1113_22:13:33
+
+========== Run 1 ==========
+[初始 Loss]
+Train epoch 1, loss: 6.2326
+[最終 Loss]
+Train epoch 1000, loss: 3.5052
+[最後一次評估]
+best epoch: 2937, best test acc: 54.1830
+
+========== Run 2 ==========
+[初始 Loss]
+Train epoch 1, loss: 6.2326
+[最終 Loss]
+Train epoch 1000, loss: 3.5523
+[最後一次評估]
+best epoch: 2799, best test acc: 49.9510
+
+========== Run 3 ==========
+[初始 Loss]
+Train epoch 1, loss: 6.2326
+[最終 Loss]
+Train epoch 1000, loss: 3.4137
+[最後一次評估]
+best epoch: 2992, best test acc: 43.6275
+
+========== Run 4 ==========
+[初始 Loss]
+Train epoch 1, loss: 6.2326
+[最終 Loss]
+Train epoch 1000, loss: 3.4652
+[最後一次評估]
+best epoch: 2823, best test acc: 48.0556
+
+========== Run 5 ==========
+[初始 Loss]
+Train epoch 1, loss: 6.2326
+[最終 Loss]
+Train epoch 1000, loss: 3.5421
+[最後一次評估]
+best epoch: 1652, best test acc: 43.4804

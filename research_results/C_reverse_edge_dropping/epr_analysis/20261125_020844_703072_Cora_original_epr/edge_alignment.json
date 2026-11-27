@@ -1,0 +1,10 @@
+{
+  "original_edge_entries": 10556,
+  "unique_original_edge_entries": 10556,
+  "canonical_undirected_edge_entries": 10556,
+  "duplicate_original_entries": 0,
+  "reverse_entries_added_by_to_undirected": 0,
+  "original_order_equals_canonical": false,
+  "sampling_edge_index_changed": false,
+  "weight_alignment": "ordered_endpoint_pair_mapping"
+}

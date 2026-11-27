@@ -1,0 +1,7 @@
+dataset: Coauthor-Phy
+drop edge: True
+add edge: True
+add edge for single graph: False
+drop feature randomly: True
+[50.65048016 50.83892009 50.69759014 50.7664432  94.16923356]
+mean:59.42, std:17.37

@@ -28,3 +28,74 @@ paper/.*
 latexsource/
 *.data
 
+
+# ==========================================
+# EPAGCL Research Extensions
+# ==========================================
+
+# Local Python environment and cache
+/.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.ruff_cache/
+
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Model checkpoints and backups
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bak
+
+# Original training artifacts
+/trained_models/
+/node_prediction_results/
+
+# Original experiment outputs
+/extension_experiments/outputs/
+/extension_experiments/efficiency_B/outputs/
+/extension_experiments/reverse_drop_C/outputs/
+/extension_experiments/reverse_drop_C/epr_outputs/
+/extension_experiments/formal_A/logs/
+
+# Raw logs, with selected provenance exceptions
+/logs/**
+!/logs/**/
+!/logs/**/*_base_commit.txt
+!/logs/**/*_source_changes.patch
+!/logs/**/*_code_changes.patch
+!/logs/**/*_queue_script_snapshot.sh
+
+# Preserve exported research records
+!/research_results/**/*.txt
+
+# Preserve experiment documentation
+!/extension_experiments/efficiency_B/README*.txt
+!/extension_experiments/formal_A/source_sha256.txt
+
+# Preserve unit tests
+!/extension_experiments/tests/
+!/extension_experiments/tests/test*.py
+
+
+# Preserve node prediction results
+!/cora_trace/test_predictions.csv
+!/cora_explore/test_predictions.csv
+
+# Preserve research audit notes
+!/midterm_audit/*.txt
+
+
+# Keep all model weights and split tensors local
+*.pt
+*.pth
+*.ckpt
+*.safetensors

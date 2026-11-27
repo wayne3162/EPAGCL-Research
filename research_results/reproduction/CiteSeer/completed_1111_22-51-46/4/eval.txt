@@ -1,0 +1,10 @@
+best epoch: 8, best test acc: 68.2313
+best epoch: 21, best test acc: 69.6958
+best epoch: 61, best test acc: 67.9309
+best epoch: 52, best test acc: 68.7570
+best epoch: 33, best test acc: 70.5220
+best epoch: 63, best test acc: 69.8085
+best epoch: 45, best test acc: 70.0713
+best epoch: 40, best test acc: 68.8321
+best epoch: 22, best test acc: 68.3815
+best epoch: 40, best test acc: 69.3579

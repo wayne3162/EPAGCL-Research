@@ -1,0 +1,135 @@
+variant,compared_repeat,stage,tensor,shape,dtype,exact_equal,shape_match,different_elements,max_abs_diff,max_abs_reference
+b0,2,00_initial,activation.weight,"(1,)",torch.float32,True,True,0,0.0,0.25
+b0,2,00_initial,conv1.bias,"(512,)",torch.float32,True,True,0,0.0,0.0
+b0,2,00_initial,conv1.lin.weight,"(512, 8415)",torch.float32,True,True,0,0.0,0.02592523582279682
+b0,2,00_initial,conv2.bias,"(256,)",torch.float32,True,True,0,0.0,0.0
+b0,2,00_initial,conv2.lin.weight,"(256, 512)",torch.float32,True,True,0,0.0,0.0883876159787178
+b0,2,00_initial,fc1.bias,"(256,)",torch.float32,True,True,0,0.0,0.061753906309604645
+b0,2,00_initial,fc1.weight,"(256, 256)",torch.float32,True,True,0,0.0,0.06249849498271942
+b0,2,00_initial,fc2.bias,"(256,)",torch.float32,True,True,0,0.0,0.062392160296440125
+b0,2,00_initial,fc2.weight,"(256, 256)",torch.float32,True,True,0,0.0,0.06249865144491196
+b0,2,01_input,edge1,"(2, 471281)",torch.int64,True,True,0,0.0,34492.0
+b0,2,01_input,edge2,"(2, 312300)",torch.int64,True,True,0,0.0,34492.0
+b0,2,02_forward_view1,conv1,"(34493, 512)",torch.float32,False,True,31871,2.7939677238464355e-09,0.022699162364006042
+b0,2,02_forward_view1,conv2,"(34493, 256)",torch.float32,False,True,440307,1.862645149230957e-09,0.023342419415712357
+b0,2,03_view1,encoder_out,"(34493, 256)",torch.float32,False,True,440307,1.862645149230957e-09,0.023342419415712357
+b0,2,03_view1,projected_z,"(34493, 256)",torch.float32,False,True,105663,1.4901161193847656e-08,0.10449784994125366
+b0,2,02_forward_view2,conv1,"(34493, 512)",torch.float32,False,True,15988,1.862645149230957e-09,0.029446003958582878
+b0,2,02_forward_view2,conv2,"(34493, 256)",torch.float32,False,True,333692,9.313225746154785e-10,0.028781043365597725
+b0,2,04_view2,encoder_out,"(34493, 256)",torch.float32,False,True,333692,9.313225746154785e-10,0.028781043365597725
+b0,2,04_view2,projected_z,"(34493, 256)",torch.float32,False,True,87889,1.4901161193847656e-08,0.1047278493642807
+b0,2,05_loss,contrastive,(),torch.float32,True,True,0,0.0,6.234663963317871
+b0,2,05_loss,total,(),torch.float32,True,True,0,0.0,6.245981216430664
+b0,2,05_loss,variance,(),torch.float32,True,True,0,0.0,0.0011317095486447215
+b0,2,06_gradient,activation.weight,"(1,)",torch.float32,True,True,0,0.0,0.008449344895780087
+b0,2,06_gradient,conv1.bias,"(512,)",torch.float32,False,True,211,9.313225746154785e-10,0.01995951123535633
+b0,2,06_gradient,conv1.lin.weight,"(512, 8415)",torch.float32,False,True,2457965,2.9103830456733704e-11,0.0003251901362091303
+b0,2,06_gradient,conv2.bias,"(256,)",torch.float32,False,True,75,2.3283064365386963e-09,0.009974071756005287
+b0,2,06_gradient,conv2.lin.weight,"(256, 512)",torch.float32,False,True,44588,7.275957614183426e-12,3.926363569917157e-05
+b0,2,06_gradient,fc1.bias,"(256,)",torch.float32,False,True,117,5.820766091346741e-11,0.00022314242960419506
+b0,2,06_gradient,fc1.weight,"(256, 256)",torch.float32,False,True,27059,3.410605131648481e-13,1.415003566762607e-06
+b0,2,06_gradient,fc2.bias,"(256,)",torch.float32,False,True,227,1.1641532182693481e-10,2.0484560081968084e-05
+b0,2,06_gradient,fc2.weight,"(256, 256)",torch.float32,False,True,30929,8.640199666842818e-12,1.5262828583217924e-06
+b0,2,07_optimizer,activation.weight.exp_avg,"(1,)",torch.float32,True,True,0,0.0,0.000819934532046318
+b0,2,07_optimizer,activation.weight.exp_avg_sq,"(1,)",torch.float32,True,True,0,0.0,6.722927281543889e-08
+b0,2,07_optimizer,activation.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b0,2,07_optimizer,conv1.bias.exp_avg,"(512,)",torch.float32,False,True,186,1.1641532182693481e-10,0.001995951170101762
+b0,2,07_optimizer,conv1.bias.exp_avg_sq,"(512,)",torch.float32,False,True,211,2.842170943040401e-14,3.983820988651132e-07
+b0,2,07_optimizer,conv1.bias.step,(),torch.float32,True,True,0,0.0,1.0
+b0,2,07_optimizer,conv1.lin.weight.exp_avg,"(512, 8415)",torch.float32,False,True,135079,3.637978807091713e-12,3.107500378973782e-05
+b0,2,07_optimizer,conv1.lin.weight.exp_avg_sq,"(512, 8415)",torch.float32,False,True,151767,2.0816681711721685e-17,9.656558885851041e-11
+b0,2,07_optimizer,conv1.lin.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b0,2,07_optimizer,conv2.bias.exp_avg,"(256,)",torch.float32,False,True,69,2.3283064365386963e-10,0.0009974072454497218
+b0,2,07_optimizer,conv2.bias.exp_avg_sq,"(256,)",torch.float32,False,True,75,2.842170943040401e-14,9.948211499022364e-08
+b0,2,07_optimizer,conv2.bias.step,(),torch.float32,True,True,0,0.0,1.0
+b0,2,07_optimizer,conv2.lin.weight.exp_avg,"(256, 512)",torch.float32,False,True,10278,9.094947017729282e-13,1.115834129450377e-05
+b0,2,07_optimizer,conv2.lin.weight.exp_avg_sq,"(256, 512)",torch.float32,False,True,11550,2.6020852139652106e-18,1.245085805290369e-11
+b0,2,07_optimizer,conv2.lin.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b0,2,07_optimizer,fc1.bias.exp_avg,"(256,)",torch.float32,False,True,114,5.7980287238024175e-12,2.231951293651946e-05
+b0,2,07_optimizer,fc1.bias.exp_avg_sq,"(256,)",torch.float32,False,True,115,1.0408340855860843e-17,4.9816064467966825e-11
+b0,2,07_optimizer,fc1.bias.step,(),torch.float32,True,True,0,0.0,1.0
+b0,2,07_optimizer,fc1.weight.exp_avg,"(256, 256)",torch.float32,False,True,614,9.094947017729282e-13,6.2770168369752355e-06
+b0,2,07_optimizer,fc1.weight.exp_avg_sq,"(256, 256)",torch.float32,False,True,713,8.673617379884035e-19,3.940094344540013e-12
+b0,2,07_optimizer,fc1.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b0,2,07_optimizer,fc2.bias.exp_avg,"(256,)",torch.float32,False,True,218,1.1823431123048067e-11,7.722289410594385e-06
+b0,2,07_optimizer,fc2.bias.exp_avg_sq,"(256,)",torch.float32,False,True,222,1.214306433183765e-17,5.963376060319492e-12
+b0,2,07_optimizer,fc2.bias.step,(),torch.float32,True,True,0,0.0,1.0
+b0,2,07_optimizer,fc2.weight.exp_avg,"(256, 256)",torch.float32,False,True,8802,1.3642420526593924e-12,6.334530098683899e-06
+b0,2,07_optimizer,fc2.weight.exp_avg_sq,"(256, 256)",torch.float32,False,True,9855,1.3010426069826053e-18,4.012627469879293e-12
+b0,2,07_optimizer,fc2.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b0,2,08_updated,activation.weight,"(1,)",torch.float32,True,True,0,0.0,0.25999999046325684
+b0,2,08_updated,conv1.bias,"(512,)",torch.float32,False,True,100,1.862645149230957e-09,0.009999995119869709
+b0,2,08_updated,conv1.lin.weight,"(512, 8415)",torch.float32,False,True,71725,1.3830140233039856e-06,0.03591903671622276
+b0,2,08_updated,conv2.bias,"(256,)",torch.float32,False,True,28,1.862645149230957e-09,0.009999989531934261
+b0,2,08_updated,conv2.lin.weight,"(256, 512)",torch.float32,False,True,3828,3.671739250421524e-07,0.07838862389326096
+b0,2,08_updated,fc1.bias,"(256,)",torch.float32,False,True,40,3.725290298461914e-09,0.051755525171756744
+b0,2,08_updated,fc1.weight,"(256, 256)",torch.float32,False,True,288,3.888271749019623e-08,0.05250009521842003
+b0,2,08_updated,fc2.bias,"(256,)",torch.float32,False,True,69,3.259629011154175e-08,0.052393510937690735
+b0,2,08_updated,fc2.weight,"(256, 256)",torch.float32,False,True,3659,4.386529326438904e-07,0.052500251680612564
+b2x8,2,00_initial,activation.weight,"(1,)",torch.float32,True,True,0,0.0,0.25
+b2x8,2,00_initial,conv1.bias,"(512,)",torch.float32,True,True,0,0.0,0.0
+b2x8,2,00_initial,conv1.lin.weight,"(512, 8415)",torch.float32,True,True,0,0.0,0.02592523582279682
+b2x8,2,00_initial,conv2.bias,"(256,)",torch.float32,True,True,0,0.0,0.0
+b2x8,2,00_initial,conv2.lin.weight,"(256, 512)",torch.float32,True,True,0,0.0,0.0883876159787178
+b2x8,2,00_initial,fc1.bias,"(256,)",torch.float32,True,True,0,0.0,0.061753906309604645
+b2x8,2,00_initial,fc1.weight,"(256, 256)",torch.float32,True,True,0,0.0,0.06249849498271942
+b2x8,2,00_initial,fc2.bias,"(256,)",torch.float32,True,True,0,0.0,0.062392160296440125
+b2x8,2,00_initial,fc2.weight,"(256, 256)",torch.float32,True,True,0,0.0,0.06249865144491196
+b2x8,2,01_input,edge1,"(2, 471281)",torch.int64,True,True,0,0.0,34492.0
+b2x8,2,01_input,edge2,"(2, 312300)",torch.int64,True,True,0,0.0,34492.0
+b2x8,2,02_forward_view1,conv1,"(34493, 512)",torch.float32,False,True,31168,2.7939677238464355e-09,0.022699162364006042
+b2x8,2,02_forward_view1,conv2,"(34493, 256)",torch.float32,False,True,428042,1.862645149230957e-09,0.023342419415712357
+b2x8,2,03_view1,encoder_out,"(34493, 256)",torch.float32,False,True,428042,1.862645149230957e-09,0.023342419415712357
+b2x8,2,03_view1,projected_z,"(34493, 256)",torch.float32,False,True,105095,1.4901161193847656e-08,0.10449784994125366
+b2x8,2,02_forward_view2,conv1,"(34493, 512)",torch.float32,False,True,12710,1.862645149230957e-09,0.029446003958582878
+b2x8,2,02_forward_view2,conv2,"(34493, 256)",torch.float32,False,True,271529,9.313225746154785e-10,0.028781043365597725
+b2x8,2,04_view2,encoder_out,"(34493, 256)",torch.float32,False,True,271529,9.313225746154785e-10,0.028781043365597725
+b2x8,2,04_view2,projected_z,"(34493, 256)",torch.float32,False,True,74003,1.4901161193847656e-08,0.1047278493642807
+b2x8,2,05_loss,contrastive,(),torch.float32,True,True,0,0.0,6.234663963317871
+b2x8,2,05_loss,total,(),torch.float32,True,True,0,0.0,6.245981216430664
+b2x8,2,05_loss,variance,(),torch.float32,True,True,0,0.0,0.0011317095486447215
+b2x8,2,06_gradient,activation.weight,"(1,)",torch.float32,False,True,1,9.313225746154785e-10,0.008449344895780087
+b2x8,2,06_gradient,conv1.bias,"(512,)",torch.float32,False,True,201,1.862645149230957e-09,0.01995951309800148
+b2x8,2,06_gradient,conv1.lin.weight,"(512, 8415)",torch.float32,False,True,2381061,2.9103830456733704e-11,0.0003251901362091303
+b2x8,2,06_gradient,conv2.bias,"(256,)",torch.float32,False,True,39,2.561137080192566e-09,0.009974072687327862
+b2x8,2,06_gradient,conv2.lin.weight,"(256, 512)",torch.float32,False,True,41880,7.275957614183426e-12,3.9263632061192766e-05
+b2x8,2,06_gradient,fc1.bias,"(256,)",torch.float32,False,True,114,4.3655745685100555e-11,0.00022314200759865344
+b2x8,2,06_gradient,fc1.weight,"(256, 256)",torch.float32,False,True,26393,2.8421709430404007e-13,1.415003225702094e-06
+b2x8,2,06_gradient,fc2.bias,"(256,)",torch.float32,False,True,208,7.639755494892597e-11,2.048720489256084e-05
+b2x8,2,06_gradient,fc2.weight,"(256, 256)",torch.float32,False,True,30506,7.73070496506989e-12,1.5264320154528832e-06
+b2x8,2,07_optimizer,activation.weight.exp_avg,"(1,)",torch.float32,False,True,1,5.820766091346741e-11,0.000819934532046318
+b2x8,2,07_optimizer,activation.weight.exp_avg_sq,"(1,)",torch.float32,False,True,1,2.1316282072803006e-14,6.722927281543889e-08
+b2x8,2,07_optimizer,activation.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b2x8,2,07_optimizer,conv1.bias.exp_avg,"(512,)",torch.float32,False,True,187,2.3283064365386963e-10,0.0019959514029324055
+b2x8,2,07_optimizer,conv1.bias.exp_avg_sq,"(512,)",torch.float32,False,True,201,8.526512829121202e-14,3.983821841302415e-07
+b2x8,2,07_optimizer,conv1.bias.step,(),torch.float32,True,True,0,0.0,1.0
+b2x8,2,07_optimizer,conv1.lin.weight.exp_avg,"(512, 8415)",torch.float32,False,True,128711,3.637978807091713e-12,3.107500378973782e-05
+b2x8,2,07_optimizer,conv1.lin.weight.exp_avg_sq,"(512, 8415)",torch.float32,False,True,144672,2.0816681711721685e-17,9.656558885851041e-11
+b2x8,2,07_optimizer,conv1.lin.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b2x8,2,07_optimizer,conv2.bias.exp_avg,"(256,)",torch.float32,False,True,35,2.6193447411060333e-10,0.0009974072454497218
+b2x8,2,07_optimizer,conv2.bias.exp_avg_sq,"(256,)",torch.float32,False,True,39,3.552713678800501e-14,9.948212920107835e-08
+b2x8,2,07_optimizer,conv2.bias.step,(),torch.float32,True,True,0,0.0,1.0
+b2x8,2,07_optimizer,conv2.lin.weight.exp_avg,"(256, 512)",torch.float32,False,True,9483,9.094947017729282e-13,1.115834129450377e-05
+b2x8,2,07_optimizer,conv2.lin.weight.exp_avg_sq,"(256, 512)",torch.float32,False,True,10700,2.6020852139652106e-18,1.245085805290369e-11
+b2x8,2,07_optimizer,conv2.lin.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b2x8,2,07_optimizer,fc1.bias.exp_avg,"(256,)",torch.float32,False,True,107,4.320099833421409e-12,2.2319471099763177e-05
+b2x8,2,07_optimizer,fc1.bias.exp_avg_sq,"(256,)",torch.float32,False,True,107,3.469446951953614e-18,4.981587711783142e-11
+b2x8,2,07_optimizer,fc1.bias.step,(),torch.float32,True,True,0,0.0,1.0
+b2x8,2,07_optimizer,fc1.weight.exp_avg,"(256, 256)",torch.float32,False,True,593,4.547473508864641e-13,6.2770168369752355e-06
+b2x8,2,07_optimizer,fc1.weight.exp_avg_sq,"(256, 256)",torch.float32,False,True,683,8.673617379884035e-19,3.940094344540013e-12
+b2x8,2,07_optimizer,fc1.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b2x8,2,07_optimizer,fc2.bias.exp_avg,"(256,)",torch.float32,False,True,202,7.275957614183426e-12,7.722185728198383e-06
+b2x8,2,07_optimizer,fc2.bias.exp_avg_sq,"(256,)",torch.float32,False,True,203,1.0408340855860843e-17,5.963215164717095e-12
+b2x8,2,07_optimizer,fc2.bias.step,(),torch.float32,True,True,0,0.0,1.0
+b2x8,2,07_optimizer,fc2.weight.exp_avg,"(256, 256)",torch.float32,False,True,7952,9.094947017729282e-13,6.334533736662706e-06
+b2x8,2,07_optimizer,fc2.weight.exp_avg_sq,"(256, 256)",torch.float32,False,True,8923,1.3010426069826053e-18,4.012632240368852e-12
+b2x8,2,07_optimizer,fc2.weight.step,(),torch.float32,True,True,0,0.0,1.0
+b2x8,2,08_updated,activation.weight,"(1,)",torch.float32,True,True,0,0.0,0.25999999046325684
+b2x8,2,08_updated,conv1.bias,"(512,)",torch.float32,False,True,85,1.862645149230957e-09,0.009999995119869709
+b2x8,2,08_updated,conv1.lin.weight,"(512, 8415)",torch.float32,False,True,68098,1.1753290891647339e-06,0.03591903671622276
+b2x8,2,08_updated,conv2.bias,"(256,)",torch.float32,False,True,15,1.862645149230957e-09,0.009999989531934261
+b2x8,2,08_updated,conv2.lin.weight,"(256, 512)",torch.float32,False,True,3715,7.734633982181549e-07,0.07838862389326096
+b2x8,2,08_updated,fc1.bias,"(256,)",torch.float32,False,True,36,3.725290298461914e-09,0.051755525171756744
+b2x8,2,08_updated,fc1.weight,"(256, 256)",torch.float32,False,True,276,3.934837877750397e-08,0.05250009521842003
+b2x8,2,08_updated,fc2.bias,"(256,)",torch.float32,False,True,59,3.725290298461914e-09,0.052393510937690735
+b2x8,2,08_updated,fc2.weight,"(256, 256)",torch.float32,False,True,3472,2.016313374042511e-07,0.052500251680612564

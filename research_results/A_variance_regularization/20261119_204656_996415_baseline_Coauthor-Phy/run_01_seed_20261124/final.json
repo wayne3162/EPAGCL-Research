@@ -1,0 +1,16 @@
+{
+  "method": "baseline",
+  "seed": 20261124,
+  "encoder_selected_epoch": 50,
+  "classifier_selected_epoch": 1,
+  "selected_validation_accuracy_pct": 51.11626386642456,
+  "final_test_accuracy_pct": 50.52726864814758,
+  "elapsed_seconds": 3438.040352234966,
+  "shadow_candidate_epoch_100": null,
+  "shadow_threshold_historical": null,
+  "diagnostics": {
+    "mean_feature_std": 0.0001399389875587076,
+    "mean_pairwise_cosine": 0.9999669194221497
+  },
+  "note": "No actual early stopping; test was held out until after validation selection."
+}

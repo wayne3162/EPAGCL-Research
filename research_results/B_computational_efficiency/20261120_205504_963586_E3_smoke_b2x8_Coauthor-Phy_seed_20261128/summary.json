@@ -1,0 +1,17 @@
+{
+  "variant": "b2x8",
+  "phase": "smoke",
+  "seed": 20261128,
+  "test_mean_pct": 94.42652463912964,
+  "test_std_pct_sample": null,
+  "test_values_pct": [
+    94.42652463912964
+  ],
+  "preprocessing_seconds": 19.342616508016363,
+  "total_run_seconds_excluding_preprocessing": 2067.7000706900144,
+  "main_model_seconds": 1967.750592818833,
+  "linear_probe_seconds": 99.72421216941439,
+  "peak_allocated_memory_mib": 5838.66748046875,
+  "evaluation_policy": "fixed split per seed; validation-only selection; test once at end",
+  "early_stop_policy": "disabled, no shadow-stop decision"
+}

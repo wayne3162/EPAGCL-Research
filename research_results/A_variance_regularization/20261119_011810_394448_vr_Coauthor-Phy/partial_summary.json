@@ -1,0 +1,21 @@
+{
+  "completed": [
+    {
+      "method": "vr",
+      "seed": 20261119,
+      "encoder_selected_epoch": 100,
+      "classifier_selected_epoch": 287,
+      "selected_validation_accuracy_pct": 89.04030323028564,
+      "final_test_accuracy_pct": 88.51965665817261,
+      "elapsed_seconds": 332.55577951390296,
+      "shadow_candidate_epoch_100": null,
+      "shadow_threshold_historical": null,
+      "diagnostics": {
+        "mean_feature_std": 0.02329162135720253,
+        "mean_pairwise_cosine": 0.5528854131698608
+      },
+      "note": "No actual early stopping; test was held out until after validation selection.",
+      "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Coauthor-Phy/seed_20261119_nodes_34493.pt"
+    }
+  ]
+}

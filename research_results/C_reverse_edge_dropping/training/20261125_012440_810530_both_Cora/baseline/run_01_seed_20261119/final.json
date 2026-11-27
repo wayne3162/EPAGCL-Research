@@ -1,0 +1,13 @@
+{
+  "method": "baseline",
+  "seed": 20261119,
+  "encoder_selected_epoch": 200,
+  "classifier_selected_epoch": 92,
+  "selected_validation_accuracy_pct": 80.37036657333374,
+  "final_test_accuracy_pct": 82.74908065795898,
+  "elapsed_seconds": 88.89083774899973,
+  "actual_drop_rate_view1": 0.2001472148541114,
+  "actual_drop_rate_view2": 0.29488328912466844,
+  "note": "Test was held out until after validation selection.",
+  "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261119_nodes_2708.pt"
+}

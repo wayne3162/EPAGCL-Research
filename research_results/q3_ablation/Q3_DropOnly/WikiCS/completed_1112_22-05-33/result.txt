@@ -1,0 +1,6 @@
+dataset: WikiCS
+drop edge: True
+add edge: False
+drop feature randomly: True
+[81.62589467 81.72203824 81.52975109 81.8074992  81.76476872]
+mean:81.69, std:0.10

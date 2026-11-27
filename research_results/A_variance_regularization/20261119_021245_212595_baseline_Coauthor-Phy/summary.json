@@ -1,0 +1,14 @@
+{
+  "method": "baseline",
+  "dataset": "Coauthor-Phy",
+  "runs": 1,
+  "test_mean_pct": 50.443923473358154,
+  "test_std_pct_population": 0.0,
+  "test_values_pct": [
+    50.443923473358154
+  ],
+  "preprocessing_seconds": 19.21265743195545,
+  "total_run_seconds_excluding_preprocessing": 339.5346415370004,
+  "evaluation_policy": "fixed split per seed; validation-only checkpoint selection; test once at end",
+  "early_stop_policy": "shadow/monitoring only; no training was stopped"
+}

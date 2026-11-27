@@ -8,7 +8,15 @@ from thop import profile
 
 from Model import MyModel
 from Utils import get_optim
-from Augmentation import add_edges, add_edge_weights, drop_edges, drop_edge_weights, drop_feature_random, add_edge_random, drop_feature_weights, drop_feature
+# from Augmentation import add_edges, add_edge_weights, drop_edges, drop_edge_weights, drop_feature_random, add_edge_random, drop_feature_weights, drop_feature
+from Augmentation import (
+    add_edges,
+    add_edge_weights,
+    drop_edges,
+    drop_edge_weights,
+    drop_feature_random,
+    add_edge_random,
+)
 from Linear_evaluation import linear_evaluation
 from Load_data import get_dataset
 from Arguments import get_args
@@ -26,9 +34,21 @@ def train(data, edge_weights, adding_edge, dropping_edge_weights, args):
         model.train()
         optimizer.zero_grad()
 
+        # if args.drop_edge:
+        #     e1 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_1)
+        #     e2 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_2)
+        # else:
+        #     e1 = data.edge_index
+        #     e2 = data.edge_index
+
         if args.drop_edge:
-            e1 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_1)
-            e2 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_2)
+            weights = dropping_edge_weights
+
+            if args.random_drop_edge:
+                weights = torch.ones_like(dropping_edge_weights)
+
+            e1 = drop_edges(data.edge_index, weights, args.edge_drop_rate_1)
+            e2 = drop_edges(data.edge_index, weights, args.edge_drop_rate_2)
         else:
             e1 = data.edge_index
             e2 = data.edge_index
@@ -105,7 +125,8 @@ if __name__ == '__main__':
     acc = []
     for i in range(args.repeat):
         args.output_path = output_path + '/' + str(i+1)
-        ac, z = train(data, adding_edge_weights, adding_edge, dropping_edge_weights, args)
+        # ac, z = train(data, adding_edge_weights, adding_edge, dropping_edge_weights, args)
+        ac = train(data, adding_edge_weights, adding_edge, dropping_edge_weights, args)
         acc.append(ac)
 
     acc = np.array(acc)

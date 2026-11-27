@@ -1,0 +1,28 @@
+{
+  "method": "baseline",
+  "runs": 5,
+  "test_mean_pct": 83.12730669975281,
+  "test_std_pct_population": 0.5830086789357939,
+  "test_values_pct": [
+    82.74908065795898,
+    82.24169611930847,
+    83.9022159576416,
+    83.53320956230164,
+    83.21033120155334
+  ],
+  "seeds": [
+    20261119,
+    20261120,
+    20261121,
+    20261122,
+    20261123
+  ],
+  "expected_drop_rate_view1": 0.20000001788139343,
+  "expected_drop_rate_view2": 0.29518669843673706,
+  "mean_actual_drop_rate_view1": 0.2001,
+  "mean_actual_drop_rate_view2": 0.2950150435771125,
+  "preprocessing_seconds": 0.551857598999959,
+  "total_run_seconds_excluding_preprocessing": 467.4039684719992,
+  "evaluation_policy": "fixed split per seed; validation-only checkpoint selection; test once at end",
+  "dataset": "Cora"
+}

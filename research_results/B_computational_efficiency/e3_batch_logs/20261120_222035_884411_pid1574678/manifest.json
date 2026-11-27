@@ -1,0 +1,75 @@
+{
+  "fixed_plan": [
+    {
+      "seed": 20261129,
+      "variant": "b0"
+    },
+    {
+      "seed": 20261129,
+      "variant": "b2x8"
+    },
+    {
+      "seed": 20261130,
+      "variant": "b2x8"
+    },
+    {
+      "seed": 20261130,
+      "variant": "b0"
+    },
+    {
+      "seed": 20261201,
+      "variant": "b0"
+    },
+    {
+      "seed": 20261201,
+      "variant": "b2x8"
+    }
+  ],
+  "device": "cuda:0",
+  "session_dir": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_batch_logs/20261120_222035_884411_pid1574678",
+  "runs": [
+    {
+      "seed": 20261129,
+      "variant": "b0",
+      "status": "complete",
+      "log": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_batch_logs/20261120_222035_884411_pid1574678/01_20261129_b0.log",
+      "output": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/20261120_222038_490934_E3_formal_b0_Coauthor-Phy_seed_20261129"
+    },
+    {
+      "seed": 20261129,
+      "variant": "b2x8",
+      "status": "complete",
+      "log": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_batch_logs/20261120_222035_884411_pid1574678/02_20261129_b2x8.log",
+      "output": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/20261120_231652_685412_E3_formal_b2x8_Coauthor-Phy_seed_20261129"
+    },
+    {
+      "seed": 20261130,
+      "variant": "b2x8",
+      "status": "complete",
+      "log": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_batch_logs/20261120_222035_884411_pid1574678/03_20261130_b2x8.log",
+      "output": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/20261120_235127_223317_E3_formal_b2x8_Coauthor-Phy_seed_20261130"
+    },
+    {
+      "seed": 20261130,
+      "variant": "b0",
+      "status": "complete",
+      "log": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_batch_logs/20261120_222035_884411_pid1574678/04_20261130_b0.log",
+      "output": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/20261121_002556_627724_E3_formal_b0_Coauthor-Phy_seed_20261130"
+    },
+    {
+      "seed": 20261201,
+      "variant": "b0",
+      "status": "complete",
+      "log": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_batch_logs/20261120_222035_884411_pid1574678/05_20261201_b0.log",
+      "output": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/20261121_012230_707333_E3_formal_b0_Coauthor-Phy_seed_20261201"
+    },
+    {
+      "seed": 20261201,
+      "variant": "b2x8",
+      "status": "complete",
+      "log": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_batch_logs/20261120_222035_884411_pid1574678/06_20261201_b2x8.log",
+      "output": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/20261121_021927_029066_E3_formal_b2x8_Coauthor-Phy_seed_20261201"
+    }
+  ],
+  "status": "completed"
+}

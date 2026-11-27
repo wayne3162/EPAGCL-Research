@@ -1,0 +1,47 @@
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                               aten::mm         0.56%     195.679ms         1.09%     378.556ms      46.222us       16.645s        43.09%       16.648s       2.033ms          8190  
+                                 volta_sgemm_128x128_tn         0.00%       0.000us         0.00%       0.000us       0.000us        8.714s        22.56%        8.714s     435.692ms            20  
+                                  volta_sgemm_128x64_nt         0.00%       0.000us         0.00%       0.000us       0.000us        7.781s        20.15%        7.781s     259.378ms            30  
+                             B0/2_GCN_projection_view_1         0.00%       0.000us         0.00%       0.000us       0.000us        5.850s        15.15%        5.850s        1.170s             5  
+                             B0/3_GCN_projection_view_2         0.00%       0.000us         0.00%       0.000us       0.000us        4.434s        11.48%        4.434s     886.763ms             5  
+                                B0/1_graph_augmentation         0.00%       0.000us         0.00%       0.000us       0.000us        2.182s         5.65%        2.182s     436.469ms             5  
+                                  B0/4_contrastive_loss         0.00%       0.000us         0.00%       0.000us       0.000us        2.073s         5.37%        2.073s     414.530ms             5  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us        1.473s         3.81%        1.473s     108.578us         13570  
+                                             aten::add_         0.30%     103.136ms         0.76%     264.499ms      21.671us        1.472s         3.81%        1.472s     120.582us         12205  
+                                     aten::masked_fill_         0.19%      65.812ms         0.43%     150.308ms      27.681us        1.226s         3.17%        1.226s     225.831us          5430  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us        1.226s         3.17%        1.226s     226.660us          5410  
+                                              aten::mul         0.71%     245.398ms         1.44%     498.637ms      24.412us        1.174s         3.04%        1.174s      57.483us         20426  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us        1.155s         2.99%        1.155s     211.840us          5450  
+                                            aten::copy_         0.15%      52.254ms         0.51%     177.131ms      32.471us     949.263ms         2.46%     950.912ms     174.319us          5455  
+                         Memcpy DtoD (Device -> Device)         0.00%       0.000us         0.00%       0.000us       0.000us     943.519ms         2.44%     943.519ms      94.352ms            10  
+                                       aten::index_add_         0.00%     293.000us         0.00%     587.000us      29.350us     476.032ms         1.23%     476.032ms      23.802ms            20  
+void at::native::indexFuncLargeIndex<float, long, un...         0.00%       0.000us         0.00%       0.000us       0.000us     476.032ms         1.23%     476.032ms      23.802ms            20  
+                                     aten::scatter_add_         0.00%       1.253ms         0.01%       2.193ms      54.825us     468.811ms         1.21%     468.812ms      11.720ms            40  
+void at::native::_scatter_gather_elementwise_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us     468.811ms         1.21%     468.811ms      11.720ms            40  
+                                            aten::fill_         0.26%      91.217ms         0.84%     289.597ms      21.294us     466.119ms         1.21%     466.134ms      34.275us         13600  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     466.119ms         1.21%     466.119ms      34.273us         13600  
+                                     aten::index_select         0.00%     506.000us         0.00%       1.233ms      61.650us     464.531ms         1.20%     464.798ms      23.240ms            20  
+void at::native::(anonymous namespace)::indexSelectL...         0.00%       0.000us         0.00%       0.000us       0.000us     464.531ms         1.20%     464.531ms      23.227ms            20  
+                                           aten::gather         0.00%     384.000us         0.00%     747.000us      37.350us     454.579ms         1.18%     454.579ms      22.729ms            20  
+void at::native::_scatter_gather_elementwise_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us     454.579ms         1.18%     454.579ms      22.729ms            20  
+                                       cudaLaunchKernel         7.77%        2.693s         7.77%        2.693s      13.662us     101.485ms         0.26%     101.485ms       0.515us        197100  
+                                 aten::_index_put_impl_         0.55%     190.977ms         2.86%     993.112ms     183.570us      59.189ms         0.15%        1.292s     238.901us          5410  
+                                              aten::div         1.52%     526.583ms         3.11%        1.079s      27.535us      51.085ms         0.13%      55.097ms       1.406us         39190  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us      38.902ms         0.10%      38.902ms       1.440us         27015  
+void at_cuda_detail::cub::DeviceRadixSortSingleTileK...         0.00%       0.000us         0.00%       0.000us       0.000us      37.826ms         0.10%      37.826ms       7.005us          5400  
+                         volta_sgemm_32x32_sliced1x4_nn         0.00%       0.000us         0.00%       0.000us       0.000us      37.520ms         0.10%      37.520ms      14.000us          2680  
+                         volta_sgemm_32x32_sliced1x4_tn         0.00%       0.000us         0.00%       0.000us       0.000us      34.212ms         0.09%      34.212ms      12.671us          2700  
+                         volta_sgemm_32x32_sliced1x4_nt         0.00%       0.000us         0.00%       0.000us       0.000us      29.480ms         0.08%      29.480ms      11.000us          2680  
+                                              aten::sum         0.42%     146.416ms         0.80%     275.708ms      33.788us      27.923ms         0.07%      28.374ms       3.477us          8160  
+void at::native::reduce_kernel<512, 1, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us      23.277ms         0.06%      23.277ms       2.867us          8120  
+                                            aten::index         0.35%     120.017ms        36.29%       12.582s       2.298ms      22.599ms         0.06%      26.480ms       4.837us          5475  
+                                  volta_sgemm_128x64_nn         0.00%       0.000us         0.00%       0.000us       0.000us      22.530ms         0.06%      22.530ms     751.000us            30  
+void (anonymous namespace)::indexing_backward_kernel...         0.00%       0.000us         0.00%       0.000us       0.000us      21.363ms         0.06%      21.363ms       3.956us          5400  
+void at::native::index_elementwise_kernel<128, 4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      21.035ms         0.05%      21.035ms       3.867us          5440  
+void splitKreduce_kernel<32, 16, int, float, float, ...         0.00%       0.000us         0.00%       0.000us       0.000us      14.541ms         0.04%      14.541ms       2.713us          5360  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 34.671s
+Self CUDA time total: 38.626s
+

@@ -1,0 +1,21 @@
+{
+  "completed": [
+    {
+      "method": "baseline",
+      "seed": 20261126,
+      "encoder_selected_epoch": 50,
+      "classifier_selected_epoch": 1,
+      "selected_validation_accuracy_pct": 50.21745562553406,
+      "final_test_accuracy_pct": 50.661349296569824,
+      "elapsed_seconds": 3377.7393603130477,
+      "shadow_candidate_epoch_100": null,
+      "shadow_threshold_historical": null,
+      "diagnostics": {
+        "mean_feature_std": 0.00011876940698130056,
+        "mean_pairwise_cosine": 0.9999748468399048
+      },
+      "note": "No actual early stopping; test was held out until after validation selection.",
+      "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Coauthor-Phy/seed_20261126_nodes_34493.pt"
+    }
+  ]
+}

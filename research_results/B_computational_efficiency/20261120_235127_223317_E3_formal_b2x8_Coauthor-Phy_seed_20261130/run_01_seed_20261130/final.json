@@ -1,0 +1,32 @@
+{
+  "method": "vr",
+  "variant": "b2x8",
+  "phase": "formal",
+  "seed": 20261130,
+  "completed_epochs": 1000,
+  "probe_count": 20,
+  "encoder_selected_epoch": 750,
+  "classifier_selected_epoch": 2467,
+  "selected_validation_accuracy_pct": 94.31719183921814,
+  "final_test_accuracy_pct": 94.58959698677063,
+  "elapsed_seconds": 2045.1674668269698,
+  "main_model_seconds": 1953.5653682531556,
+  "linear_probe_seconds": 91.29609788581729,
+  "finalization_seconds": 0.28563218703493476,
+  "mean_seconds_per_main_step": 1.9535653682531555,
+  "median_seconds_per_main_step": 2.40341604501009,
+  "p90_seconds_per_main_step": 3.4699421039549634,
+  "peak_allocated_memory_mib": 5837.22998046875,
+  "shadow_candidate_epoch_100": null,
+  "shadow_threshold_historical": null,
+  "diagnostics": {
+    "mean_feature_std": 0.009162872098386288,
+    "mean_pairwise_cosine": 0.5745211839675903
+  },
+  "final_contrastive_loss": 4.586421489715576,
+  "final_variance_loss": 1.7853415101853898e-06,
+  "final_total_loss": 4.58643913269043,
+  "note": "No early stopping. Test only after validation selection. Per-main-step timing includes CUDA sync at epoch boundaries; compare B0/B2x8 within this runner only.",
+  "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Coauthor-Phy/seed_20261130_nodes_34493.pt",
+  "split_sha256": "fac7887683fb2d5f1d701f0fb2ee87a6477c2955ea8f6c2ca2e55e1334740feb"
+}

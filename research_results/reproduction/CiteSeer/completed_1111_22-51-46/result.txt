@@ -1,0 +1,7 @@
+dataset: CiteSeer
+drop edge: True
+add edge: True
+add edge for single graph: True
+drop feature randomly: True
+[70.59707097 71.16034548 70.03379647 70.52196771 70.85993241]
+mean:70.63, std:0.37

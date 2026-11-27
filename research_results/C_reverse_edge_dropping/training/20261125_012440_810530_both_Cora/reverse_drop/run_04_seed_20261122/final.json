@@ -1,0 +1,13 @@
+{
+  "method": "reverse_drop",
+  "seed": 20261122,
+  "encoder_selected_epoch": 200,
+  "classifier_selected_epoch": 38,
+  "selected_validation_accuracy_pct": 89.25925493240356,
+  "final_test_accuracy_pct": 82.4262022972107,
+  "elapsed_seconds": 98.93950743999994,
+  "actual_drop_rate_view1": 0.20019628647214854,
+  "actual_drop_rate_view2": 0.30034028040924593,
+  "note": "Test was held out until after validation selection.",
+  "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261122_nodes_2708.pt"
+}

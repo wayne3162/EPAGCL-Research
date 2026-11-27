@@ -1,0 +1,138 @@
+{
+  "completed": {
+    "baseline": [
+      {
+        "method": "baseline",
+        "seed": 20261119,
+        "encoder_selected_epoch": 200,
+        "classifier_selected_epoch": 92,
+        "selected_validation_accuracy_pct": 80.37036657333374,
+        "final_test_accuracy_pct": 82.74908065795898,
+        "elapsed_seconds": 88.89083774899973,
+        "actual_drop_rate_view1": 0.2001472148541114,
+        "actual_drop_rate_view2": 0.29488328912466844,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261119_nodes_2708.pt"
+      },
+      {
+        "method": "baseline",
+        "seed": 20261120,
+        "encoder_selected_epoch": 50,
+        "classifier_selected_epoch": 95,
+        "selected_validation_accuracy_pct": 82.22222328186035,
+        "final_test_accuracy_pct": 82.24169611930847,
+        "elapsed_seconds": 101.01254410999991,
+        "actual_drop_rate_view1": 0.199946949602122,
+        "actual_drop_rate_view2": 0.2949924213717317,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261120_nodes_2708.pt"
+      },
+      {
+        "method": "baseline",
+        "seed": 20261121,
+        "encoder_selected_epoch": 50,
+        "classifier_selected_epoch": 49,
+        "selected_validation_accuracy_pct": 87.03703284263611,
+        "final_test_accuracy_pct": 83.9022159576416,
+        "elapsed_seconds": 94.272202698,
+        "actual_drop_rate_view1": 0.1998258810155362,
+        "actual_drop_rate_view2": 0.294893899204244,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261121_nodes_2708.pt"
+      },
+      {
+        "method": "baseline",
+        "seed": 20261122,
+        "encoder_selected_epoch": 100,
+        "classifier_selected_epoch": 42,
+        "selected_validation_accuracy_pct": 89.99999761581421,
+        "final_test_accuracy_pct": 83.53320956230164,
+        "elapsed_seconds": 90.05739363699968,
+        "actual_drop_rate_view1": 0.20030295566502462,
+        "actual_drop_rate_view2": 0.29526600985221674,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261122_nodes_2708.pt"
+      },
+      {
+        "method": "baseline",
+        "seed": 20261123,
+        "encoder_selected_epoch": 50,
+        "classifier_selected_epoch": 30,
+        "selected_validation_accuracy_pct": 84.44444537162781,
+        "final_test_accuracy_pct": 83.21033120155334,
+        "elapsed_seconds": 93.17099027799986,
+        "actual_drop_rate_view1": 0.20027699886320577,
+        "actual_drop_rate_view2": 0.29503959833270177,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261123_nodes_2708.pt"
+      }
+    ],
+    "reverse_drop": [
+      {
+        "method": "reverse_drop",
+        "seed": 20261119,
+        "encoder_selected_epoch": 100,
+        "classifier_selected_epoch": 316,
+        "selected_validation_accuracy_pct": 80.0000011920929,
+        "final_test_accuracy_pct": 82.1494460105896,
+        "elapsed_seconds": 94.53272724900035,
+        "actual_drop_rate_view1": 0.20020765441455096,
+        "actual_drop_rate_view2": 0.29989693065555134,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261119_nodes_2708.pt"
+      },
+      {
+        "method": "reverse_drop",
+        "seed": 20261120,
+        "encoder_selected_epoch": 50,
+        "classifier_selected_epoch": 88,
+        "selected_validation_accuracy_pct": 82.22222328186035,
+        "final_test_accuracy_pct": 82.4262022972107,
+        "elapsed_seconds": 105.69694202000028,
+        "actual_drop_rate_view1": 0.19999545282303904,
+        "actual_drop_rate_view2": 0.3000591133004926,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261120_nodes_2708.pt"
+      },
+      {
+        "method": "reverse_drop",
+        "seed": 20261121,
+        "encoder_selected_epoch": 50,
+        "classifier_selected_epoch": 44,
+        "selected_validation_accuracy_pct": 86.29629611968994,
+        "final_test_accuracy_pct": 83.25645923614502,
+        "elapsed_seconds": 97.61486546800006,
+        "actual_drop_rate_view1": 0.19997233800682077,
+        "actual_drop_rate_view2": 0.2998207654414551,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261121_nodes_2708.pt"
+      },
+      {
+        "method": "reverse_drop",
+        "seed": 20261122,
+        "encoder_selected_epoch": 200,
+        "classifier_selected_epoch": 38,
+        "selected_validation_accuracy_pct": 89.25925493240356,
+        "final_test_accuracy_pct": 82.4262022972107,
+        "elapsed_seconds": 98.93950743999994,
+        "actual_drop_rate_view1": 0.20019628647214854,
+        "actual_drop_rate_view2": 0.30034028040924593,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261122_nodes_2708.pt"
+      },
+      {
+        "method": "reverse_drop",
+        "seed": 20261123,
+        "encoder_selected_epoch": 50,
+        "classifier_selected_epoch": 47,
+        "selected_validation_accuracy_pct": 83.70370268821716,
+        "final_test_accuracy_pct": 83.44095945358276,
+        "elapsed_seconds": 99.64343318599958,
+        "actual_drop_rate_view1": 0.20027415687760516,
+        "actual_drop_rate_view2": 0.3000270935960591,
+        "note": "Test was held out until after validation selection.",
+        "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Cora/seed_20261123_nodes_2708.pt"
+      }
+    ]
+  }
+}

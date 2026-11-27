@@ -1,0 +1,70 @@
+{
+  "purpose": "Single frozen-input GCNConv propagation control; not training/benchmark",
+  "seed": 20261129,
+  "gpu": "NVIDIA GeForce RTX 2070",
+  "torch_version": "2.3.0+cu121",
+  "repeats_per_condition": 2,
+  "source_sha256": {
+    "Model.py": "66bf131decb3b6cc527c92209dcb4a55d38648ea55ca7e6ac4cf70b1f316c033",
+    "Augmentation.py": "a880882304d3fb6ea80781b3c116e669a4581562210e0ef756c463cff26ba787",
+    "Load_data.py": "fd33d59ced330183d505b9b2b22cd0bcdc22ae0097024fef88498d5fb80dafe2",
+    "Utils.py": "c0bf03020f1385f65adebf645cd35b9da5089fc6bf06f41bc27c99822922ea88",
+    "extension_experiments/run.py": "494edbd05616ee58fc4aff7a741eb75e072e03ec12b8ddf88c2c85d32581de75",
+    "extension_experiments/fixed_eval.py": "e8a05361838826817cb98d3d412bbfd8d3c347b06da376598bfb477f4c71416f",
+    "extension_experiments/vr_regularization.py": "9809b89b734fd7c82f14bbe1aa9b31e547de5f73b58d911f726f57f7e485f79e",
+    "extension_experiments/efficiency_B/model_b1.py": "d53ce118759c4761ff03f54960cd316045a661d96294d87ff79727aaa2b72dab",
+    "extension_experiments/efficiency_B/model_b2.py": "e759db29243e26ba6bc5e22cfe85bc8fac98ec93edc63af72d9f27ef1d24d368",
+    "extension_experiments/efficiency_B/train_e3.py": "b2a728e3039e5648ecd66ac56d9f9afa28ae329debf49179d1fe951fd6908161"
+  },
+  "conditions": [
+    "normal_before",
+    "strict_deterministic",
+    "normal_after"
+  ],
+  "comparisons": [
+    {
+      "comparison": "normal_before: repeat_1_vs_2",
+      "exact_equal": false,
+      "different_elements": 33916,
+      "max_abs_diff": 2.7939677238464355e-09
+    },
+    {
+      "comparison": "strict_deterministic: repeat_1_vs_2",
+      "exact_equal": true,
+      "different_elements": 0,
+      "max_abs_diff": 0.0
+    },
+    {
+      "comparison": "normal_after: repeat_1_vs_2",
+      "exact_equal": false,
+      "different_elements": 34565,
+      "max_abs_diff": 2.7939677238464355e-09
+    },
+    {
+      "comparison": "normal_before_vs_normal_after",
+      "exact_equal": false,
+      "different_elements": 33749,
+      "max_abs_diff": 2.7939677238464355e-09
+    },
+    {
+      "comparison": "normal_before_vs_strict_deterministic",
+      "exact_equal": false,
+      "different_elements": 879159,
+      "max_abs_diff": 1.3969838619232178e-08
+    },
+    {
+      "comparison": "strict_deterministic_vs_normal_after",
+      "exact_equal": false,
+      "different_elements": 879412,
+      "max_abs_diff": 1.4901161193847656e-08
+    }
+  ],
+  "errors": {},
+  "limitations": [
+    "Exact output repeatability for this operation does not guarantee entire training determinism.",
+    "The strict mode may trigger a deterministic fallback or fail for unsupported PyG/CUDA kernels.",
+    "CUBLAS_WORKSPACE_CONFIG must be set before the Python process starts if applicable.",
+    "GPU sync and CPU snapshots make timing incomparable to E3; no speed conclusions.",
+    "No formal E3 results, model code, parameters, splits, labels, or checkpoints changed."
+  ]
+}

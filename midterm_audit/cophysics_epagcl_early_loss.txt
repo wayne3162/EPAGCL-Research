@@ -1,0 +1,145 @@
+
+========================================
+EPAGCL Run 1
+========================================
+[最初的 Loss]
+Train epoch 1, loss: 6.2347
+Train epoch 2, loss: 6.2343
+Train epoch 3, loss: 6.2271
+Train epoch 4, loss: 6.1950
+Train epoch 5, loss: 6.2344
+
+[關鍵 Epoch]
+Train epoch 50, loss: 6.2347
+Train epoch 100, loss: 6.2347
+Train epoch 150, loss: 6.2347
+Train epoch 200, loss: 6.2347
+Train epoch 250, loss: 6.2347
+Train epoch 300, loss: 6.2347
+Train epoch 400, loss: 6.2347
+Train epoch 500, loss: 6.2347
+Train epoch 700, loss: 6.2347
+Train epoch 1000, loss: 6.2347
+
+[最後的 Loss]
+Train epoch 996, loss: 6.2347
+Train epoch 997, loss: 6.2347
+Train epoch 998, loss: 6.2347
+Train epoch 999, loss: 6.2347
+Train epoch 1000, loss: 6.2347
+
+========================================
+EPAGCL Run 2
+========================================
+[最初的 Loss]
+Train epoch 1, loss: 6.2347
+Train epoch 2, loss: 6.2344
+Train epoch 3, loss: 6.2303
+Train epoch 4, loss: 6.2084
+Train epoch 5, loss: 6.2345
+
+[關鍵 Epoch]
+Train epoch 50, loss: 5.1402
+Train epoch 100, loss: 4.8137
+Train epoch 150, loss: 4.7498
+Train epoch 200, loss: 4.7168
+Train epoch 250, loss: 4.7470
+Train epoch 300, loss: 4.6423
+Train epoch 400, loss: 4.6215
+Train epoch 500, loss: 4.6403
+Train epoch 700, loss: 4.5837
+Train epoch 1000, loss: 4.5786
+
+[最後的 Loss]
+Train epoch 996, loss: 4.5939
+Train epoch 997, loss: 4.5822
+Train epoch 998, loss: 4.5804
+Train epoch 999, loss: 4.5849
+Train epoch 1000, loss: 4.5786
+
+========================================
+EPAGCL Run 3
+========================================
+[最初的 Loss]
+Train epoch 1, loss: 6.2347
+Train epoch 2, loss: 6.2344
+Train epoch 3, loss: 6.2306
+Train epoch 4, loss: 6.2082
+Train epoch 5, loss: 6.2345
+
+[關鍵 Epoch]
+Train epoch 50, loss: 5.1360
+Train epoch 100, loss: 4.8865
+Train epoch 150, loss: 4.8017
+Train epoch 200, loss: 4.7678
+Train epoch 250, loss: 4.6738
+Train epoch 300, loss: 4.6531
+Train epoch 400, loss: 4.6254
+Train epoch 500, loss: 4.6137
+Train epoch 700, loss: 4.5889
+Train epoch 1000, loss: 4.5531
+
+[最後的 Loss]
+Train epoch 996, loss: 4.5676
+Train epoch 997, loss: 4.5957
+Train epoch 998, loss: 4.6281
+Train epoch 999, loss: 4.6176
+Train epoch 1000, loss: 4.5531
+
+========================================
+EPAGCL Run 4
+========================================
+[最初的 Loss]
+Train epoch 1, loss: 6.2347
+Train epoch 2, loss: 6.2343
+Train epoch 3, loss: 6.2261
+Train epoch 4, loss: 6.2186
+Train epoch 5, loss: 6.2341
+
+[關鍵 Epoch]
+Train epoch 50, loss: 6.2347
+Train epoch 100, loss: 6.2347
+Train epoch 150, loss: 6.2347
+Train epoch 200, loss: 6.2347
+Train epoch 250, loss: 6.2347
+Train epoch 300, loss: 6.2347
+Train epoch 400, loss: 6.2347
+Train epoch 500, loss: 6.2347
+Train epoch 700, loss: 6.2347
+Train epoch 1000, loss: 6.2347
+
+[最後的 Loss]
+Train epoch 996, loss: 6.2347
+Train epoch 997, loss: 6.2347
+Train epoch 998, loss: 6.2347
+Train epoch 999, loss: 6.2347
+Train epoch 1000, loss: 6.2347
+
+========================================
+EPAGCL Run 5
+========================================
+[最初的 Loss]
+Train epoch 1, loss: 6.2347
+Train epoch 2, loss: 6.2344
+Train epoch 3, loss: 6.2296
+Train epoch 4, loss: 6.2039
+Train epoch 5, loss: 6.2345
+
+[關鍵 Epoch]
+Train epoch 50, loss: 6.2347
+Train epoch 100, loss: 6.2347
+Train epoch 150, loss: 6.2347
+Train epoch 200, loss: 6.2347
+Train epoch 250, loss: 6.2347
+Train epoch 300, loss: 6.2347
+Train epoch 400, loss: 6.2347
+Train epoch 500, loss: 6.2347
+Train epoch 700, loss: 6.2347
+Train epoch 1000, loss: 6.2347
+
+[最後的 Loss]
+Train epoch 996, loss: 6.2347
+Train epoch 997, loss: 6.2347
+Train epoch 998, loss: 6.2347
+Train epoch 999, loss: 6.2347
+Train epoch 1000, loss: 6.2347

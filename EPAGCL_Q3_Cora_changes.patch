@@ -1,0 +1,98 @@
+diff --git a/Arguments.py b/Arguments.py
+index e7b92df..7169fc4 100644
+--- a/Arguments.py
++++ b/Arguments.py
+@@ -21,7 +21,9 @@ def get_args():
+     parser.add_argument('--not_drop_edge', action="store_true")
+     parser.add_argument('--add_single', action='store_true')
+     parser.add_argument('--add_edge_random', action="store_true")
++    parser.add_argument('--random_drop_edge', action="store_true")
+     parser.add_argument('--batch_compute', action="store_true")
++    parser.add_argument('--not_drop_feature_random', action="store_true")
+ 
+     # optimizer
+     parser.add_argument('--optim', type=str, default='Adam')
+diff --git a/Linear_evaluation.py b/Linear_evaluation.py
+index 55925ac..e74aaaa 100644
+--- a/Linear_evaluation.py
++++ b/Linear_evaluation.py
+@@ -1,5 +1,5 @@
+ import torch
+-
++from copy import copy
+ from tqdm import tqdm
+ from torch.utils.data import random_split
+ 
+@@ -21,7 +21,16 @@ def linear_evaluation(z, y, args, epochs, split=None):
+     val_set, val_label = z[val_mask], y[val_mask]
+ 
+     classifier = LinearClassifier(feat_dim, classes_num).to(args.device)
+-    optimizer = get_optim(classifier.parameters(), args.eval_optim, args.eval_lr, args.eval_weight_decay)
++    # optimizer = get_optim(classifier.parameters(), args.eval_optim, args.eval_lr, args.eval_weight_decay)
++    # 建立線性評估專用的參數設定
++    eval_args = copy(args)
++
++    eval_args.optim = args.eval_optim
++    eval_args.lr = args.eval_lr
++    eval_args.weight_decay = args.eval_weight_decay
++
++    # 使用線性評估的超參數建立 optimizer
++    optimizer = get_optim(classifier.parameters(), eval_args)
+     criterion = torch.nn.CrossEntropyLoss()
+ 
+     best_val_acc = 0
+diff --git a/main.py b/main.py
+index 40efd0b..6f78b00 100644
+--- a/main.py
++++ b/main.py
+@@ -8,7 +8,15 @@ from thop import profile
+ 
+ from Model import MyModel
+ from Utils import get_optim
+-from Augmentation import add_edges, add_edge_weights, drop_edges, drop_edge_weights, drop_feature_random, add_edge_random, drop_feature_weights, drop_feature
++# from Augmentation import add_edges, add_edge_weights, drop_edges, drop_edge_weights, drop_feature_random, add_edge_random, drop_feature_weights, drop_feature
++from Augmentation import (
++    add_edges,
++    add_edge_weights,
++    drop_edges,
++    drop_edge_weights,
++    drop_feature_random,
++    add_edge_random,
++)
+ from Linear_evaluation import linear_evaluation
+ from Load_data import get_dataset
+ from Arguments import get_args
+@@ -26,9 +34,21 @@ def train(data, edge_weights, adding_edge, dropping_edge_weights, args):
+         model.train()
+         optimizer.zero_grad()
+ 
++        # if args.drop_edge:
++        #     e1 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_1)
++        #     e2 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_2)
++        # else:
++        #     e1 = data.edge_index
++        #     e2 = data.edge_index
++
+         if args.drop_edge:
+-            e1 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_1)
+-            e2 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_2)
++            weights = dropping_edge_weights
++
++            if args.random_drop_edge:
++                weights = torch.ones_like(dropping_edge_weights)
++
++            e1 = drop_edges(data.edge_index, weights, args.edge_drop_rate_1)
++            e2 = drop_edges(data.edge_index, weights, args.edge_drop_rate_2)
+         else:
+             e1 = data.edge_index
+             e2 = data.edge_index
+@@ -105,7 +125,8 @@ if __name__ == '__main__':
+     acc = []
+     for i in range(args.repeat):
+         args.output_path = output_path + '/' + str(i+1)
+-        ac, z = train(data, adding_edge_weights, adding_edge, dropping_edge_weights, args)
++        # ac, z = train(data, adding_edge_weights, adding_edge, dropping_edge_weights, args)
++        ac = train(data, adding_edge_weights, adding_edge, dropping_edge_weights, args)
+         acc.append(ac)
+ 
+     acc = np.array(acc)

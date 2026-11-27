@@ -1,0 +1,7 @@
+dataset: Amazon-Photo
+drop edge: False
+add edge: True
+add edge for single graph: True
+drop feature randomly: True
+[54.18300654 49.95098039 44.86928105 48.05555556 43.48039216]
+mean:48.11, std:3.80

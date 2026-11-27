@@ -1,0 +1,15 @@
+{
+  "dataset": "Cora",
+  "dataset_path": null,
+  "device": "cpu",
+  "samples": 10,
+  "repeat": 1,
+  "seed": 20261119,
+  "edge_add_rate": 0.1,
+  "edge_drop_rate_1": 0.2,
+  "edge_drop_rate_2": 0.3,
+  "dataset_path_resolved": "/home/user/projects/datasets/Cora",
+  "epr_definition": "original GitHub EPR.py: mean over nonisolated nodes after to_undirected",
+  "add_sampling_p": 0.5,
+  "add_sampling_threshold": 0.9
+}

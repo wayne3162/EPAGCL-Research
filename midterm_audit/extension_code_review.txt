@@ -1,0 +1,426 @@
+========== main.py ==========
+import torch
+import os
+import numpy as np
+
+from tqdm import tqdm
+from time import time
+from thop import profile
+
+from Model import MyModel
+from Utils import get_optim
+# from Augmentation import add_edges, add_edge_weights, drop_edges, drop_edge_weights, drop_feature_random, add_edge_random, drop_feature_weights, drop_feature
+from Augmentation import (
+    add_edges,
+    add_edge_weights,
+    drop_edges,
+    drop_edge_weights,
+    drop_feature_random,
+    add_edge_random,
+)
+from Linear_evaluation import linear_evaluation
+from Load_data import get_dataset
+from Arguments import get_args
+
+def train(data, edge_weights, adding_edge, dropping_edge_weights, args):
+    model = MyModel(data.num_features, args.feat_dim, args.proj_hidden_dim, args.temperature).to(args.device)
+    optimizer = get_optim(model.parameters(), args)
+
+    best_ac = 0.
+    # flops, _ = profile(model, inputs=(data.x, data.edge_index))
+    # print('Flops = {}'.format(flops))
+    train_bar = tqdm(range(args.epoch), desc='Training')
+    for epoch in train_bar:
+        # t1 = time()
+        model.train()
+        optimizer.zero_grad()
+
+        # if args.drop_edge:
+        #     e1 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_1)
+        #     e2 = drop_edges(data.edge_index, dropping_edge_weights, args.edge_drop_rate_2)
+        # else:
+        #     e1 = data.edge_index
+        #     e2 = data.edge_index
+
+        if args.drop_edge:
+            weights = dropping_edge_weights
+
+            if args.random_drop_edge:
+                weights = torch.ones_like(dropping_edge_weights)
+
+            e1 = drop_edges(data.edge_index, weights, args.edge_drop_rate_1)
+            e2 = drop_edges(data.edge_index, weights, args.edge_drop_rate_2)
+        else:
+            e1 = data.edge_index
+            e2 = data.edge_index
+
+        if args.add_edge_random:
+            edge_index_1 = add_edge_random(e1)
+            edge_index_2 = add_edge_random(e2)
+        elif args.add_edge:
+            edge_index_1 = add_edges(edge_weights, adding_edge, e1)
+            edge_index_2 = add_edges(edge_weights, adding_edge, e2)
+        else:
+            edge_index_1 = e1
+            edge_index_2 = e2
+        if args.add_single:
+            edge_index_2 = e2
+
+        x_1 = drop_feature_random(data.x, args.feat_drop_rate_1)
+        x_2 = drop_feature_random(data.x, args.feat_drop_rate_2)
+
+        _, z1 = model(x_1, edge_index_1)
+        _, z2 = model(x_2, edge_index_2)
+        loss = model.loss(z1, z2, args.batch_compute)
+        loss.backward()
+        optimizer.step()
+        # t2 = time()
+        # print(t2-t1)
+        train_bar.set_description("Train epoch {}, loss: {:.4f}".format(epoch + 1, loss.item()))
+
+        if (epoch + 1) % args.loss_log == 0:
+            path = args.output_path + "/loss.txt"
+            f = open(path, "a")
+            print("Train epoch {}, loss: {:.4f}".format(epoch + 1, loss.item()), file=f)
+            f.close()
+        if (epoch + 1) % args.eval == 0: # early stop
+            path = args.output_path + "/eval.txt"
+            model.eval()
+            z = model(data.x, data.edge_index)[0].detach()
+            y = data.y
+            output, ac= linear_evaluation(z, y, args, epoch + 1)
+            if ac > best_ac:
+                best_ac = ac
+                torch.save(model.state_dict(), args.output_path + '/best_ac_ckpt.pth')
+            f = open(path, "a")
+            print(output, file=f)
+            f.close()
+        if (epoch + 1) % args.save_model == 0:
+            path = args.output_path + "/ckpt_epoch{}.pth".format(epoch + 1)
+            torch.save(model.state_dict(), path)
+    train_bar.close()
+    print("best ac: {:.4f}".format(best_ac))
+    return best_ac
+
+def setup(data, args):
+    if args.not_add_edge:
+        adding_edge_weights, adding_edge = None, None
+    else:
+        adding_edge_weights, adding_edge = add_edge_weights(data.edge_index, args.edge_add_rate)
+    if args.not_drop_edge:
+        dropping_edge_weights = None
+    else:
+        dropping_edge_weights = drop_edge_weights(data.edge_index)
+    return adding_edge_weights, adding_edge, dropping_edge_weights
+
+if __name__ == '__main__':
+    args = get_args()
+    data = get_dataset(args.dataset_path, args.dataset).to(args.device)
+    t0 = time()
+    adding_edge_weights, adding_edge, dropping_edge_weights = setup(data, args)
+    t1 = time()
+    print(f"Data Processing Time: {t1-t0:.2f}s")
+    output_path = args.output_path
+    
+    print(f"dataset:{args.dataset}  device:{args.device}  feature dim:{args.feat_dim}")
+    acc = []
+    for i in range(args.repeat):
+        args.output_path = output_path + '/' + str(i+1)
+        # ac, z = train(data, adding_edge_weights, adding_edge, dropping_edge_weights, args)
+        ac = train(data, adding_edge_weights, adding_edge, dropping_edge_weights, args)
+        acc.append(ac)
+
+    acc = np.array(acc)
+    print("max:{:.2f}, min:{:.2f}, mean:{:.2f}, std:{:.2f}".format(acc.max(), acc.min(), acc.mean(), acc.std()))
+    f = open(output_path+'/result.txt',"a")
+    print(acc, file=f)
+    print("mean:{:.2f}, std:{:.2f}".format(acc.mean(), acc.std()), file=f)
+    dir = output_path.replace('in-progress', 'completed')
+    os.rename(output_path, dir)
+    print("result saved to" + dir)
+========== Linear_evaluation.py ==========
+import torch
+from copy import copy
+from tqdm import tqdm
+from torch.utils.data import random_split
+
+from Model import LinearClassifier
+from Utils import get_optim
+
+def linear_evaluation(z, y, args, epochs, split=None):
+    classes_num = y.max().item() + 1
+    y = y.view(-1)
+    feat_dim = z.size(1)
+    
+    if split == None:
+        train_mask, test_mask, val_mask = dataset_split(z.size(0))
+    else:
+        train_mask, test_mask, val_mask = split['train'], split['test'], split['valid']
+        
+    train_set, train_label = z[train_mask], y[train_mask]
+    test_set, test_label = z[test_mask], y[test_mask]
+    val_set, val_label = z[val_mask], y[val_mask]
+
+    classifier = LinearClassifier(feat_dim, classes_num).to(args.device)
+    # optimizer = get_optim(classifier.parameters(), args.eval_optim, args.eval_lr, args.eval_weight_decay)
+    # 建立線性評估專用的參數設定
+    eval_args = copy(args)
+
+    eval_args.optim = args.eval_optim
+    eval_args.lr = args.eval_lr
+    eval_args.weight_decay = args.eval_weight_decay
+
+    # 使用線性評估的超參數建立 optimizer
+    optimizer = get_optim(classifier.parameters(), eval_args)
+    criterion = torch.nn.CrossEntropyLoss()
+
+    best_val_acc = 0
+    best_test_acc = 0
+    best_epoch = 0
+
+    eval_bar = tqdm(range(args.eval_epoch), desc='Evaluating')
+    for epoch in eval_bar:
+        classifier.train()
+        optimizer.zero_grad()
+        
+        output = classifier(train_set)
+        loss = criterion(output, train_label)
+        loss.backward()
+        optimizer.step()
+
+        classifier.eval()
+        val_acc = ac(classifier, val_set, val_label)
+        test_acc = ac(classifier, test_set, test_label)
+        if val_acc > best_val_acc or (val_acc == best_val_acc and test_acc > best_test_acc):
+            best_val_acc = val_acc
+            best_test_acc = test_acc
+            best_epoch = epoch
+            path = "./best_eval.pth"
+            torch.save(classifier.state_dict(), path)
+        
+        eval_bar.set_description("Eval epoch {}, best test acc: {:.4f}".format(epochs, best_test_acc))
+        eval_bar.set_postfix(loss=loss.item())
+    eval_bar.close()
+    classifier.load_state_dict(torch.load("./best_eval.pth"))
+    classifier.eval()
+    return "best epoch: {}, best test acc: {:.4f}".format(best_epoch, best_test_acc), best_test_acc
+    
+def ac(model, dataset, label):
+    output = model(dataset)
+    _, pred = torch.max(output, 1)
+    total = label.size(0)
+    correct = (pred == label).sum().item()
+    return 100 * correct / total
+
+def dataset_split(num, train_ratio = 0.1, val_ratio = 0.1):
+    train_len = int(num * train_ratio)
+    val_len = int(num * val_ratio)
+    test_len = num - train_len - val_len
+    
+    train, test, val = random_split(torch.arange(0, num), (train_len, test_len, val_len))
+    train_idx, test_idx, val_idx = train.indices, test.indices, val.indices
+    return get_mask(num, train_idx), get_mask(num, test_idx), get_mask(num, val_idx)
+
+def get_mask(len, idx):
+    mask = torch.zeros(len).to(torch.bool)
+    mask[idx] = True
+    return mask
+
+========== Arguments.py ==========
+import argparse
+import os
+
+from datetime import datetime
+
+def get_args():
+    parser = argparse.ArgumentParser()
+
+    # Training Settings
+    #----------------------------------------------------------------
+    # device
+    parser.add_argument('--cuda_num', type=int, default=0, 
+                        help='CUDA to train on.')
+    
+    # basic
+    parser.add_argument('--epoch', type=int, default=500,
+                        help='Number of epochs to train.')
+    parser.add_argument('--repeat', type=int, default=5,
+                        help='repeating times')
+    parser.add_argument('--not_add_edge', action="store_true")
+    parser.add_argument('--not_drop_edge', action="store_true")
+    parser.add_argument('--add_single', action='store_true')
+    parser.add_argument('--add_edge_random', action="store_true")
+    parser.add_argument('--random_drop_edge', action="store_true")
+    parser.add_argument('--batch_compute', action="store_true")
+    parser.add_argument('--not_drop_feature_random', action="store_true")
+
+    # optimizer
+    parser.add_argument('--optim', type=str, default='Adam')
+    parser.add_argument('--lr', type=float, default=1e-3)
+    parser.add_argument('--weight_decay', type=float, default=1e-4)
+
+    # log and saving
+    parser.add_argument('--path', type=str, default='./trained_models/',
+                        help='The path of outputs')
+    parser.add_argument('--loss_log', type=int, default=1,
+                    help='Frequency to log loss.')
+    parser.add_argument('--eval', type=int, default=50,
+                    help='Frequency to eval model.')
+
+    #----------------------------------------------------------------
+
+    # Dataset Settings
+    #----------------------------------------------------------------
+    # dataset
+    parser.add_argument('--dataset', type=str, default='Cora')
+    parser.add_argument('--dataset_path', type=str, default='../datasets/')
+
+    # augmentation
+    parser.add_argument('--edge_add_rate', type=float, default=0.1)
+    parser.add_argument('--edge_drop_rate_1', type=float, default=0.2)
+    parser.add_argument('--edge_drop_rate_2', type=float, default=0.3)
+    parser.add_argument('--feat_drop_rate_1', type=float, default=0.1)
+    parser.add_argument('--feat_drop_rate_2', type=float, default=0.1)
+
+    #----------------------------------------------------------------
+
+    # Networks Settings
+    #----------------------------------------------------------------
+    # basic
+    parser.add_argument('--feat_dim', type=int, default=256)
+    parser.add_argument('--proj_hidden_dim', type=int, default=256)
+
+    # calculate loss
+    parser.add_argument('--temperature', type=float, default=0.3)
+
+    #----------------------------------------------------------------
+
+    # Evaluate Settings
+    #----------------------------------------------------------------
+    # basic
+    parser.add_argument('--eval_epoch', type=int, default=3000)
+
+    # optimizer
+    parser.add_argument('--eval_optim', type=str, default='Adam')
+    parser.add_argument('--eval_lr', type=float, default=0.01)
+    parser.add_argument('--eval_weight_decay', type=float, default=0.0)
+
+    #----------------------------------------------------------------
+
+    args = parser.parse_args()
+    args.device = 'cuda:' + str(args.cuda_num)
+    args.output_path = args.path + args.dataset + '/in-progress_'+datetime.now().strftime('%m%d_%H:%M:%S')
+    args.dataset_path += args.dataset
+    args.save_model = args.epoch // 10
+    args.add_edge = not args.not_add_edge
+    args.drop_edge = not args.not_drop_edge
+    args.drop_feature_random = not args.not_drop_feature_random
+    for i in range(args.repeat):
+        path = args.output_path + '/' + str(i+1)
+        if not os.path.exists(path):
+            os.makedirs(path)
+    f = open(args.output_path+'/args.txt', "a")
+    for k, v in args.__dict__.items():
+        print(f"{k}: {v}", file=f)
+    f.close()
+    f = open(args.output_path+'/result.txt', "a")
+    print(f"dataset: {args.dataset}", file=f)
+    print(f"drop edge: {args.drop_edge}", file=f)
+    print(f"add edge: {args.add_edge}", file=f)
+    if args.add_edge:
+        print(f"add edge for single graph: {args.add_single}", file=f)
+    print(f"drop feature randomly: {args.drop_feature_random}", file=f)
+    f.close()
+    return args
+========== Model.py ==========
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from torch_geometric.nn import GCNConv
+
+class MyModel(nn.Module):
+    def __init__(self, in_channels, out_channels, num_proj_hidden, temperature=0.3, activation='PReLU'):
+        super().__init__()
+        if activation == 'PReLU':
+            self.activation = nn.PReLU()
+        self._build_up(in_channels, out_channels, num_proj_hidden, temperature)
+
+    def forward(self, x, edge_index):
+        out = self.activation(self.conv1(x, edge_index))
+        out = self.activation(self.conv2(out, edge_index))
+        proj = F.relu(self.fc1(out))
+        proj = self.fc2(proj)
+        return out, proj
+    
+    def loss(self, z1, z2, batch_compute= False, batch_size=256):
+        l1 = self.cal_loss(z1, z2, batch_compute, batch_size)
+        l2 = self.cal_loss(z2, z1, batch_compute, batch_size)
+        l = (l1 + l2) * 0.5
+        return l.mean()
+    
+    def cal_sim(self, z1, z2):
+        z1 = F.normalize(z1)
+        z2 = F.normalize(z2)
+        sim = torch.mm(z1, z2.t())
+        return torch.exp(sim / self.t)
+
+    def cal_loss(self, z1, z2, batch_compute=False, batch_size=256):
+        device = z1.device
+        num_nodes = z1.size(0)
+        num_batches = (num_nodes - 1) // batch_size + 1
+        if not batch_compute:
+            indices = torch.arange(0, num_nodes).to(device)
+        else:
+            indices = torch.randperm(num_nodes).to(device)
+        losses = []
+
+        for i in range(num_batches):
+            mask = indices[i * batch_size:(i + 1) * batch_size]
+            if not batch_compute:
+                refl_sim = self.cal_sim(z1[mask], z1)
+                between_sim = self.cal_sim(z1[mask], z2)
+                losses.append(-torch.log(between_sim[:, i * batch_size:(i + 1) * batch_size].diag()
+                                     / (refl_sim.sum(1) + between_sim.sum(1)
+                                        - refl_sim[:, i * batch_size:(i + 1) * batch_size].diag())))
+            else:
+                refl_sim = self.cal_sim(z1[mask], z1[mask])
+                between_sim = self.cal_sim(z1[mask], z2[mask])
+                losses.append(-torch.log(between_sim.diag() / (refl_sim.sum(1) + between_sim.sum(1) - refl_sim.diag())))
+        return torch.cat(losses)    
+
+    def _build_up(self, in_channels, out_channels, num_proj_hidden, temperature):
+        self.conv1 = GCNConv(in_channels, 2 * out_channels)
+        self.conv2 = GCNConv(2 * out_channels, out_channels)
+        self.fc1 = nn.Linear(out_channels, num_proj_hidden)
+        self.fc2 = nn.Linear(num_proj_hidden, out_channels)
+        self.t = temperature
+    
+    def freeze(self, flag=True):
+        for p in self.parameters():
+            p.requires_grad = not flag
+
+
+class LinearClassifier(nn.Module):
+    def __init__(self, feat_dim, classes_num):
+        super().__init__()
+        self.fc = nn.Linear(feat_dim, classes_num)
+
+    def weights_init(self, m):
+        if isinstance(m, nn.Linear):
+            nn.init.xavier_uniform_(m.weight.data)
+            if m.bias is not None:
+                m.bias.data.fill_(0.0)
+
+    def forward(self, x):
+        out = self.fc(x)
+        return out
+
+========== Utils.py ==========
+from torch.optim import Adam, SGD
+
+def get_optim(params, args):
+    if args.optim == 'Adam':
+        return Adam(params=params, lr=args.lr, weight_decay=args.weight_decay)
+    if args.optim == 'SGD':
+        return SGD(params=params, lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)

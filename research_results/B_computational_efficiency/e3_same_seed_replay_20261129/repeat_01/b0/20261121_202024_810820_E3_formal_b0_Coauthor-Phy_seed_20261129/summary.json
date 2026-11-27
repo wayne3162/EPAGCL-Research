@@ -1,0 +1,17 @@
+{
+  "variant": "b0",
+  "phase": "formal",
+  "seed": 20261129,
+  "test_mean_pct": 93.95905137062073,
+  "test_std_pct_sample": null,
+  "test_values_pct": [
+    93.95905137062073
+  ],
+  "preprocessing_seconds": 19.28593059501145,
+  "total_run_seconds_excluding_preprocessing": 3398.707837344031,
+  "main_model_seconds": 3307.024704832933,
+  "linear_probe_seconds": 91.49901110993233,
+  "peak_allocated_memory_mib": 5836.125,
+  "evaluation_policy": "fixed split per seed; validation-only selection; test once at end",
+  "early_stop_policy": "disabled, no shadow-stop decision"
+}

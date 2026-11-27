@@ -1,0 +1,626 @@
+{
+  "study": "B0 vs B1 fixed-input numerical/gradient equivalence",
+  "seed": 20261123,
+  "device": "cuda:0",
+  "gpu_name": "NVIDIA GeForce RTX 2070",
+  "torch_version": "2.3.0+cu121",
+  "rtol": 0.0001,
+  "atol": 1e-05,
+  "batch_size": 256,
+  "all_required_sizes": [
+    64,
+    256,
+    257,
+    1025,
+    34493
+  ],
+  "small_only": false,
+  "source_sha256": {
+    "Model.py": "66bf131decb3b6cc527c92209dcb4a55d38648ea55ca7e6ac4cf70b1f316c033",
+    "extension_experiments/efficiency_B/model_b1.py": "d53ce118759c4761ff03f54960cd316045a661d96294d87ff79727aaa2b72dab",
+    "extension_experiments/efficiency_B/verify_b1.py": "4cef173046ca4fc4457b5631bf743372558e06139ba729fb4c550a64a9e73fe1",
+    "extension_experiments/vr_regularization.py": "9809b89b734fd7c82f14bbe1aa9b31e547de5f73b58d911f726f57f7e485f79e"
+  },
+  "checks": [
+    {
+      "kind": "embedding_and_input_gradient",
+      "nodes": 64,
+      "last_batch_nodes": 64,
+      "batch_size": 256,
+      "two_directional_randperm_draws_identical": true,
+      "rng_state_after_loss_identical": true,
+      "comparisons": [
+        {
+          "name": "loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "d_loss_d_z1",
+          "passed": true,
+          "max_absolute_difference": 8.731149137020111e-11,
+          "max_relative_difference_clamped_denominator": 7.275957614183426e-07,
+          "elements_outside_tolerance": 0,
+          "element_count": 16384
+        },
+        {
+          "name": "d_loss_d_z2",
+          "passed": true,
+          "max_absolute_difference": 5.820766091346741e-11,
+          "max_relative_difference_clamped_denominator": 5.079713787381479e-07,
+          "elements_outside_tolerance": 0,
+          "element_count": 16384
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "embedding_and_input_gradient",
+      "nodes": 256,
+      "last_batch_nodes": 256,
+      "batch_size": 256,
+      "two_directional_randperm_draws_identical": true,
+      "rng_state_after_loss_identical": true,
+      "comparisons": [
+        {
+          "name": "loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "d_loss_d_z1",
+          "passed": true,
+          "max_absolute_difference": 2.9103830456733704e-11,
+          "max_relative_difference_clamped_denominator": 3.565137092209625e-07,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        },
+        {
+          "name": "d_loss_d_z2",
+          "passed": true,
+          "max_absolute_difference": 1.4551915228366852e-11,
+          "max_relative_difference_clamped_denominator": 2.7284841053187847e-07,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "embedding_and_input_gradient",
+      "nodes": 257,
+      "last_batch_nodes": 1,
+      "batch_size": 256,
+      "two_directional_randperm_draws_identical": true,
+      "rng_state_after_loss_identical": true,
+      "comparisons": [
+        {
+          "name": "loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "d_loss_d_z1",
+          "passed": true,
+          "max_absolute_difference": 2.1827872842550278e-11,
+          "max_relative_difference_clamped_denominator": 3.637978807091713e-07,
+          "elements_outside_tolerance": 0,
+          "element_count": 65792
+        },
+        {
+          "name": "d_loss_d_z2",
+          "passed": true,
+          "max_absolute_difference": 1.4551915228366852e-11,
+          "max_relative_difference_clamped_denominator": 3.637978807091713e-07,
+          "elements_outside_tolerance": 0,
+          "element_count": 65792
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "embedding_and_input_gradient",
+      "nodes": 1025,
+      "last_batch_nodes": 1,
+      "batch_size": 256,
+      "two_directional_randperm_draws_identical": true,
+      "rng_state_after_loss_identical": true,
+      "comparisons": [
+        {
+          "name": "loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "d_loss_d_z1",
+          "passed": true,
+          "max_absolute_difference": 7.275957614183426e-12,
+          "max_relative_difference_clamped_denominator": 3.838610496131878e-07,
+          "elements_outside_tolerance": 0,
+          "element_count": 262400
+        },
+        {
+          "name": "d_loss_d_z2",
+          "passed": true,
+          "max_absolute_difference": 3.637978807091713e-12,
+          "max_relative_difference_clamped_denominator": 2.7284841053187847e-07,
+          "elements_outside_tolerance": 0,
+          "element_count": 262400
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "embedding_and_input_gradient",
+      "nodes": 34493,
+      "last_batch_nodes": 189,
+      "batch_size": 256,
+      "two_directional_randperm_draws_identical": true,
+      "rng_state_after_loss_identical": true,
+      "comparisons": [
+        {
+          "name": "loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "d_loss_d_z1",
+          "passed": true,
+          "max_absolute_difference": 2.2737367544323206e-13,
+          "max_relative_difference_clamped_denominator": 2.2737367544323206e-08,
+          "elements_outside_tolerance": 0,
+          "element_count": 8830208
+        },
+        {
+          "name": "d_loss_d_z2",
+          "passed": true,
+          "max_absolute_difference": 2.2737367544323206e-13,
+          "max_relative_difference_clamped_denominator": 2.2737367544323206e-08,
+          "elements_outside_tolerance": 0,
+          "element_count": 8830208
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "model_parameter_gradients_with_VR",
+      "nodes": 64,
+      "last_batch_nodes": 64,
+      "two_directional_randperm_draws_identical": true,
+      "rng_state_after_loss_identical": true,
+      "comparisons": [
+        {
+          "name": "contrastive_loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "variance_penalty_unchanged",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "total_VR_loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "grad_activation.weight",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "grad_conv1.bias",
+          "passed": true,
+          "max_absolute_difference": 2.3283064365386963e-09,
+          "max_relative_difference_clamped_denominator": 4.1000410419655964e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 512
+        },
+        {
+          "name": "grad_conv1.lin.weight",
+          "passed": true,
+          "max_absolute_difference": 1.862645149230957e-09,
+          "max_relative_difference_clamped_denominator": 0.00010477378964424133,
+          "elements_outside_tolerance": 0,
+          "element_count": 16384
+        },
+        {
+          "name": "grad_conv2.bias",
+          "passed": true,
+          "max_absolute_difference": 3.725290298461914e-09,
+          "max_relative_difference_clamped_denominator": 1.2214461094117723e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        },
+        {
+          "name": "grad_conv2.lin.weight",
+          "passed": true,
+          "max_absolute_difference": 1.3969838619232178e-09,
+          "max_relative_difference_clamped_denominator": 6.83940015733242e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 131072
+        },
+        {
+          "name": "grad_fc1.weight",
+          "passed": true,
+          "max_absolute_difference": 3.259629011154175e-09,
+          "max_relative_difference_clamped_denominator": 0.00013478299661073834,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        },
+        {
+          "name": "grad_fc1.bias",
+          "passed": true,
+          "max_absolute_difference": 7.450580596923828e-09,
+          "max_relative_difference_clamped_denominator": 3.518813900882378e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        },
+        {
+          "name": "grad_fc2.weight",
+          "passed": true,
+          "max_absolute_difference": 1.4551915228366852e-09,
+          "max_relative_difference_clamped_denominator": 0.00010477378964424133,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        },
+        {
+          "name": "grad_fc2.bias",
+          "passed": true,
+          "max_absolute_difference": 7.450580596923828e-09,
+          "max_relative_difference_clamped_denominator": 3.387648757779971e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "model_parameter_gradients_with_VR",
+      "nodes": 256,
+      "last_batch_nodes": 256,
+      "two_directional_randperm_draws_identical": true,
+      "rng_state_after_loss_identical": true,
+      "comparisons": [
+        {
+          "name": "contrastive_loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "variance_penalty_unchanged",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "total_VR_loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "grad_activation.weight",
+          "passed": true,
+          "max_absolute_difference": 9.313225746154785e-10,
+          "max_relative_difference_clamped_denominator": 8.231928916302422e-08,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "grad_conv1.bias",
+          "passed": true,
+          "max_absolute_difference": 9.313225746154785e-10,
+          "max_relative_difference_clamped_denominator": 3.8549016608158126e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 512
+        },
+        {
+          "name": "grad_conv1.lin.weight",
+          "passed": true,
+          "max_absolute_difference": 9.313225746154785e-10,
+          "max_relative_difference_clamped_denominator": 4.220055416226387e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 16384
+        },
+        {
+          "name": "grad_conv2.bias",
+          "passed": true,
+          "max_absolute_difference": 1.1641532182693481e-09,
+          "max_relative_difference_clamped_denominator": 5.586956467595883e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        },
+        {
+          "name": "grad_conv2.lin.weight",
+          "passed": true,
+          "max_absolute_difference": 3.4924596548080444e-10,
+          "max_relative_difference_clamped_denominator": 2.9103830456733704e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 131072
+        },
+        {
+          "name": "grad_fc1.weight",
+          "passed": true,
+          "max_absolute_difference": 9.313225746154785e-10,
+          "max_relative_difference_clamped_denominator": 4.0745362639427185e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        },
+        {
+          "name": "grad_fc1.bias",
+          "passed": true,
+          "max_absolute_difference": 2.3283064365386963e-09,
+          "max_relative_difference_clamped_denominator": 1.2038661225233227e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        },
+        {
+          "name": "grad_fc2.weight",
+          "passed": true,
+          "max_absolute_difference": 7.566995918750763e-10,
+          "max_relative_difference_clamped_denominator": 4.6566128730773926e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        },
+        {
+          "name": "grad_fc2.bias",
+          "passed": true,
+          "max_absolute_difference": 2.444721758365631e-09,
+          "max_relative_difference_clamped_denominator": 7.535795157309622e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "model_parameter_gradients_with_VR",
+      "nodes": 257,
+      "last_batch_nodes": 1,
+      "two_directional_randperm_draws_identical": true,
+      "rng_state_after_loss_identical": true,
+      "comparisons": [
+        {
+          "name": "contrastive_loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "variance_penalty_unchanged",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "total_VR_loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "grad_activation.weight",
+          "passed": true,
+          "max_absolute_difference": 2.7939677238464355e-09,
+          "max_relative_difference_clamped_denominator": 3.237324790461571e-07,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "grad_conv1.bias",
+          "passed": true,
+          "max_absolute_difference": 8.149072527885437e-10,
+          "max_relative_difference_clamped_denominator": 5.227063593338244e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 512
+        },
+        {
+          "name": "grad_conv1.lin.weight",
+          "passed": true,
+          "max_absolute_difference": 6.984919309616089e-10,
+          "max_relative_difference_clamped_denominator": 4.456185342860408e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 16384
+        },
+        {
+          "name": "grad_conv2.bias",
+          "passed": true,
+          "max_absolute_difference": 1.1641532182693481e-09,
+          "max_relative_difference_clamped_denominator": 2.3283064365386963e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        },
+        {
+          "name": "grad_conv2.lin.weight",
+          "passed": true,
+          "max_absolute_difference": 3.4924596548080444e-10,
+          "max_relative_difference_clamped_denominator": 3.4924596548080444e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 131072
+        },
+        {
+          "name": "grad_fc1.weight",
+          "passed": true,
+          "max_absolute_difference": 1.1641532182693481e-09,
+          "max_relative_difference_clamped_denominator": 4.6566128730773926e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        },
+        {
+          "name": "grad_fc1.bias",
+          "passed": true,
+          "max_absolute_difference": 2.3283064365386963e-09,
+          "max_relative_difference_clamped_denominator": 6.984919309616089e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        },
+        {
+          "name": "grad_fc2.weight",
+          "passed": true,
+          "max_absolute_difference": 5.820766091346741e-10,
+          "max_relative_difference_clamped_denominator": 3.4924596548080444e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        },
+        {
+          "name": "grad_fc2.bias",
+          "passed": true,
+          "max_absolute_difference": 2.7939677238464355e-09,
+          "max_relative_difference_clamped_denominator": 0.00015248551790136844,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "model_parameter_gradients_with_VR",
+      "nodes": 1025,
+      "last_batch_nodes": 1,
+      "two_directional_randperm_draws_identical": true,
+      "rng_state_after_loss_identical": true,
+      "comparisons": [
+        {
+          "name": "contrastive_loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "variance_penalty_unchanged",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "total_VR_loss",
+          "passed": true,
+          "max_absolute_difference": 0.0,
+          "max_relative_difference_clamped_denominator": 0.0,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "grad_activation.weight",
+          "passed": true,
+          "max_absolute_difference": 4.656612873077393e-10,
+          "max_relative_difference_clamped_denominator": 9.502328168764507e-08,
+          "elements_outside_tolerance": 0,
+          "element_count": 1
+        },
+        {
+          "name": "grad_conv1.bias",
+          "passed": true,
+          "max_absolute_difference": 6.111804395914078e-10,
+          "max_relative_difference_clamped_denominator": 3.4924596548080444e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 512
+        },
+        {
+          "name": "grad_conv1.lin.weight",
+          "passed": true,
+          "max_absolute_difference": 4.656612873077393e-10,
+          "max_relative_difference_clamped_denominator": 2.9103830456733704e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 16384
+        },
+        {
+          "name": "grad_conv2.bias",
+          "passed": true,
+          "max_absolute_difference": 1.3969838619232178e-09,
+          "max_relative_difference_clamped_denominator": 2.18438381125452e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        },
+        {
+          "name": "grad_conv2.lin.weight",
+          "passed": true,
+          "max_absolute_difference": 2.473825588822365e-10,
+          "max_relative_difference_clamped_denominator": 1.673470251262188e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 131072
+        },
+        {
+          "name": "grad_fc1.weight",
+          "passed": true,
+          "max_absolute_difference": 6.984919309616089e-10,
+          "max_relative_difference_clamped_denominator": 3.4924596548080444e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        },
+        {
+          "name": "grad_fc1.bias",
+          "passed": true,
+          "max_absolute_difference": 1.6298145055770874e-09,
+          "max_relative_difference_clamped_denominator": 7.566995918750763e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        },
+        {
+          "name": "grad_fc2.weight",
+          "passed": true,
+          "max_absolute_difference": 4.656612873077393e-10,
+          "max_relative_difference_clamped_denominator": 2.9103830456733704e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 65536
+        },
+        {
+          "name": "grad_fc2.bias",
+          "passed": true,
+          "max_absolute_difference": 1.862645149230957e-09,
+          "max_relative_difference_clamped_denominator": 9.313225746154785e-05,
+          "elements_outside_tolerance": 0,
+          "element_count": 256
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

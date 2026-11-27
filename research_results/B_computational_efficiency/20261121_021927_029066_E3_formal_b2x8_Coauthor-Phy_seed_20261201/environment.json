@@ -1,0 +1,13 @@
+{
+  "device": "cuda:0",
+  "gpu_name": "NVIDIA GeForce RTX 2070",
+  "torch_version": "2.3.0+cu121",
+  "python_version": "3.11.18",
+  "dataset_nodes": 34493,
+  "dataset_features": 8415,
+  "preprocessing_seconds": 18.02686572400853,
+  "split_path": "/home/user/projects/EPAGCL/extension_experiments/splits/Coauthor-Phy/seed_20261201_nodes_34493.pt",
+  "split_sha256": "d608a5c69c1b4e18032904e727c60f0b8805786693485b337dbf41545f987924",
+  "timing_policy": "CUDA synchronized wall time per epoch: augmentation + two forwards + contrastive + original VR + backward + optimizer + scalar log; probe excluded. Linear probe timed separately.",
+  "full_run_policy": "elapsed_seconds includes 1000 main epochs, validation probes, and final test; excludes data preprocessing"
+}

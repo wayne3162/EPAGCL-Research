@@ -1,0 +1,16 @@
+{
+  "method": "vr",
+  "seed": 20261124,
+  "encoder_selected_epoch": 1000,
+  "classifier_selected_epoch": 2946,
+  "selected_validation_accuracy_pct": 94.37518119812012,
+  "final_test_accuracy_pct": 94.22358870506287,
+  "elapsed_seconds": 3452.9426219980232,
+  "shadow_candidate_epoch_100": null,
+  "shadow_threshold_historical": null,
+  "diagnostics": {
+    "mean_feature_std": 0.008151035755872726,
+    "mean_pairwise_cosine": 0.6148568391799927
+  },
+  "note": "No actual early stopping; test was held out until after validation selection."
+}

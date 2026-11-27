@@ -1,0 +1,137 @@
+{
+  "purpose": "Exploratory non-determinism/late-learning diagnosis, not new independent seeds",
+  "seed": 20261129,
+  "original_formal_results_preserved": true,
+  "warning": "Do not merge replays into five-seed confirmatory sample or replace original low result.",
+  "shared_original_source_sha256": {
+    "Model.py": "66bf131decb3b6cc527c92209dcb4a55d38648ea55ca7e6ac4cf70b1f316c033",
+    "Augmentation.py": "a880882304d3fb6ea80781b3c116e669a4581562210e0ef756c463cff26ba787",
+    "Load_data.py": "fd33d59ced330183d505b9b2b22cd0bcdc22ae0097024fef88498d5fb80dafe2",
+    "Utils.py": "c0bf03020f1385f65adebf645cd35b9da5089fc6bf06f41bc27c99822922ea88",
+    "extension_experiments/run.py": "494edbd05616ee58fc4aff7a741eb75e072e03ec12b8ddf88c2c85d32581de75",
+    "extension_experiments/fixed_eval.py": "e8a05361838826817cb98d3d412bbfd8d3c347b06da376598bfb477f4c71416f",
+    "extension_experiments/vr_regularization.py": "9809b89b734fd7c82f14bbe1aa9b31e547de5f73b58d911f726f57f7e485f79e",
+    "extension_experiments/efficiency_B/model_b1.py": "d53ce118759c4761ff03f54960cd316045a661d96294d87ff79727aaa2b72dab",
+    "extension_experiments/efficiency_B/model_b2.py": "e759db29243e26ba6bc5e22cfe85bc8fac98ec93edc63af72d9f27ef1d24d368",
+    "extension_experiments/efficiency_B/train_e3.py": "b2a728e3039e5648ecd66ac56d9f9afa28ae329debf49179d1fe951fd6908161"
+  },
+  "runs": [
+    {
+      "repeat": 0,
+      "origin": "original_formal",
+      "variant": "b0",
+      "folder": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/20261120_222038_490934_E3_formal_b0_Coauthor-Phy_seed_20261129",
+      "accuracy_pct": 93.83946061134338,
+      "selected_validation_pct": 93.85328888893127,
+      "selected_encoder_epoch": 1000,
+      "final_contrastive_loss": 4.586904525756836,
+      "stable_below_6_22_epoch": 193,
+      "main_model_seconds": 3253.9403469339013,
+      "full_run_seconds": 3350.5506056350423,
+      "mean_feature_std": 0.008213946595788002,
+      "mean_pairwise_cosine": 0.7116875052452087
+    },
+    {
+      "repeat": 0,
+      "origin": "original_formal",
+      "variant": "b2x8",
+      "folder": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/20261120_231652_685412_E3_formal_b2x8_Coauthor-Phy_seed_20261129",
+      "accuracy_pct": 92.02391505241394,
+      "selected_validation_pct": 91.96868538856506,
+      "selected_encoder_epoch": 1000,
+      "final_contrastive_loss": 4.76904296875,
+      "stable_below_6_22_epoch": 831,
+      "main_model_seconds": 1959.321941617527,
+      "full_run_seconds": 2051.9374428690644,
+      "mean_feature_std": 0.01740226149559021,
+      "mean_pairwise_cosine": 0.7225690484046936
+    },
+    {
+      "repeat": 1,
+      "origin": "exploratory_replay",
+      "variant": "b0",
+      "folder": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_same_seed_replay_20261129/repeat_01/b0/20261121_202024_810820_E3_formal_b0_Coauthor-Phy_seed_20261129",
+      "accuracy_pct": 93.95905137062073,
+      "selected_validation_pct": 94.46216225624084,
+      "selected_encoder_epoch": 800,
+      "final_contrastive_loss": 4.603456497192383,
+      "stable_below_6_22_epoch": 141,
+      "main_model_seconds": 3307.024704832933,
+      "full_run_seconds": 3398.707837344031,
+      "mean_feature_std": 0.008678882382810116,
+      "mean_pairwise_cosine": 0.6112503409385681
+    },
+    {
+      "repeat": 1,
+      "origin": "exploratory_replay",
+      "variant": "b2x8",
+      "folder": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_same_seed_replay_20261129/repeat_01/b2x8/20261121_211727_675767_E3_formal_b2x8_Coauthor-Phy_seed_20261129",
+      "accuracy_pct": 94.29606795310974,
+      "selected_validation_pct": 94.46216225624084,
+      "selected_encoder_epoch": 700,
+      "final_contrastive_loss": 4.5727128982543945,
+      "stable_below_6_22_epoch": 122,
+      "main_model_seconds": 1991.8847136188997,
+      "full_run_seconds": 2082.6346278059063,
+      "mean_feature_std": 0.013389237225055695,
+      "mean_pairwise_cosine": 0.4066322147846222
+    },
+    {
+      "repeat": 2,
+      "origin": "exploratory_replay",
+      "variant": "b2x8",
+      "folder": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_same_seed_replay_20261129/repeat_02/b2x8/20261121_215235_031645_E3_formal_b2x8_Coauthor-Phy_seed_20261129",
+      "accuracy_pct": 93.79597902297974,
+      "selected_validation_pct": 94.37518119812012,
+      "selected_encoder_epoch": 450,
+      "final_contrastive_loss": 4.596189022064209,
+      "stable_below_6_22_epoch": 130,
+      "main_model_seconds": 1974.897992168786,
+      "full_run_seconds": 2065.219557452947,
+      "mean_feature_std": 0.012040257453918457,
+      "mean_pairwise_cosine": 0.5002831816673279
+    },
+    {
+      "repeat": 2,
+      "origin": "exploratory_replay",
+      "variant": "b0",
+      "folder": "/home/user/projects/EPAGCL/extension_experiments/efficiency_B/outputs/e3_same_seed_replay_20261129/repeat_02/b0/20261121_222724_541921_E3_formal_b0_Coauthor-Phy_seed_20261129",
+      "accuracy_pct": 94.42652463912964,
+      "selected_validation_pct": 94.60713267326355,
+      "selected_encoder_epoch": 1000,
+      "final_contrastive_loss": 4.62875509262085,
+      "stable_below_6_22_epoch": 158,
+      "main_model_seconds": 3168.563738381141,
+      "full_run_seconds": 3260.8797342960024,
+      "mean_feature_std": 0.007357119116932154,
+      "mean_pairwise_cosine": 0.6733643412590027
+    }
+  ],
+  "pairs": [
+    {
+      "repeat": 0,
+      "origin": "original_formal",
+      "delta_accuracy_pp": -1.8155455589294434,
+      "full_time_reduction_pct": 38.758201729051244,
+      "b0_stable_epoch": 193,
+      "b2_stable_epoch": 831
+    },
+    {
+      "repeat": 1,
+      "origin": "exploratory_replay",
+      "delta_accuracy_pp": 0.33701658248901367,
+      "full_time_reduction_pct": 38.72275207293454,
+      "b0_stable_epoch": 141,
+      "b2_stable_epoch": 122
+    },
+    {
+      "repeat": 2,
+      "origin": "exploratory_replay",
+      "delta_accuracy_pp": -0.6305456161499023,
+      "full_time_reduction_pct": 36.666797743805446,
+      "b0_stable_epoch": 158,
+      "b2_stable_epoch": 130
+    }
+  ],
+  "updated_at": "2026-11-21T23:22:06"
+}

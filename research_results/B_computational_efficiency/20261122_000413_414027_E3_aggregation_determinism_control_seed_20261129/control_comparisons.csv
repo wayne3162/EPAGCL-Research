@@ -1,0 +1,7 @@
+comparison,exact_equal,different_elements,max_abs_diff
+normal_before: repeat_1_vs_2,False,33916,2.7939677238464355e-09
+strict_deterministic: repeat_1_vs_2,True,0,0.0
+normal_after: repeat_1_vs_2,False,34565,2.7939677238464355e-09
+normal_before_vs_normal_after,False,33749,2.7939677238464355e-09
+normal_before_vs_strict_deterministic,False,879159,1.3969838619232178e-08
+strict_deterministic_vs_normal_after,False,879412,1.4901161193847656e-08

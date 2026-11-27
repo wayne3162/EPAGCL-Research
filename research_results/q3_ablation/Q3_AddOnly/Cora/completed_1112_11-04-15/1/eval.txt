@@ -1,0 +1,10 @@
+best epoch: 149, best test acc: 78.0443
+best epoch: 178, best test acc: 76.4299
+best epoch: 206, best test acc: 77.1218
+best epoch: 295, best test acc: 75.9225
+best epoch: 164, best test acc: 76.8450
+best epoch: 104, best test acc: 78.0443
+best epoch: 161, best test acc: 76.2915
+best epoch: 162, best test acc: 74.8155
+best epoch: 226, best test acc: 77.8598
+best epoch: 268, best test acc: 77.1218

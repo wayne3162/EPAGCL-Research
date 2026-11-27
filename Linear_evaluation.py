@@ -1,5 +1,5 @@
 import torch
-
+from copy import copy
 from tqdm import tqdm
 from torch.utils.data import random_split
 
@@ -21,7 +21,16 @@ def linear_evaluation(z, y, args, epochs, split=None):
     val_set, val_label = z[val_mask], y[val_mask]
 
     classifier = LinearClassifier(feat_dim, classes_num).to(args.device)
-    optimizer = get_optim(classifier.parameters(), args.eval_optim, args.eval_lr, args.eval_weight_decay)
+    # optimizer = get_optim(classifier.parameters(), args.eval_optim, args.eval_lr, args.eval_weight_decay)
+    # 建立線性評估專用的參數設定
+    eval_args = copy(args)
+
+    eval_args.optim = args.eval_optim
+    eval_args.lr = args.eval_lr
+    eval_args.weight_decay = args.eval_weight_decay
+
+    # 使用線性評估的超參數建立 optimizer
+    optimizer = get_optim(classifier.parameters(), eval_args)
     criterion = torch.nn.CrossEntropyLoss()
 
     best_val_acc = 0

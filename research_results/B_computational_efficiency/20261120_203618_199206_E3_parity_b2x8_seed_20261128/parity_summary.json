@@ -1,0 +1,111 @@
+{
+  "purpose": "Localize odd-even time alternation, NOT a speed benchmark",
+  "variant": "b2x8",
+  "seed": 20261128,
+  "steps_per_condition": 16,
+  "gpu": "NVIDIA GeForce RTX 2070",
+  "torch_version": "2.3.0+cu121",
+  "dataset": "Coauthor-Phy",
+  "conditions": {
+    "dynamic_1": {
+      "forward_s": {
+        "odd_median_s": 0.1590012750821188,
+        "even_median_s": 1.8071532270405442,
+        "even_over_odd": 11.365652420757069
+      },
+      "backward_s": {
+        "odd_median_s": 0.17731413908768445,
+        "even_median_s": 1.5709531400352716,
+        "even_over_odd": 8.85971726856149
+      },
+      "sum_s": {
+        "odd_median_s": 0.39100537181366235,
+        "even_median_s": 3.8091422730358317,
+        "even_over_odd": 9.741918008356974
+      },
+      "augmentation_s": {
+        "odd_median_s": 0.033170415088534355,
+        "even_median_s": 0.4019261619541794,
+        "even_over_odd": 12.117007305498227
+      },
+      "edge1_min_max": [
+        470630,
+        471508
+      ],
+      "edge2_min_max": [
+        312088,
+        312979
+      ]
+    },
+    "fixed": {
+      "forward_s": {
+        "odd_median_s": 0.14409485890064389,
+        "even_median_s": 0.14605002000462264,
+        "even_over_odd": 1.0135685694749657
+      },
+      "backward_s": {
+        "odd_median_s": 0.1775600720429793,
+        "even_median_s": 0.176901072030887,
+        "even_over_odd": 0.9962885799464376
+      },
+      "sum_s": {
+        "odd_median_s": 0.3420447240350768,
+        "even_median_s": 0.34133924706839025,
+        "even_over_odd": 0.997937471572828
+      },
+      "augmentation_s": {
+        "odd_median_s": 0.0,
+        "even_median_s": 0.0,
+        "even_over_odd": null
+      },
+      "edge1_min_max": [
+        471083,
+        471083
+      ],
+      "edge2_min_max": [
+        312173,
+        312173
+      ]
+    },
+    "dynamic_2": {
+      "forward_s": {
+        "odd_median_s": 0.13835159305017442,
+        "even_median_s": 1.6697455239482224,
+        "even_over_odd": 12.068856506355331
+      },
+      "backward_s": {
+        "odd_median_s": 0.17667469196021557,
+        "even_median_s": 1.5688839179929346,
+        "even_over_odd": 8.88007161968746
+      },
+      "sum_s": {
+        "odd_median_s": 0.3653983831172809,
+        "even_median_s": 3.647174356970936,
+        "even_over_odd": 9.981364246486862
+      },
+      "augmentation_s": {
+        "odd_median_s": 0.026314698974601924,
+        "even_median_s": 0.3904025809606537,
+        "even_over_odd": 14.83591286138053
+      },
+      "edge1_min_max": [
+        470630,
+        471508
+      ],
+      "edge2_min_max": [
+        312088,
+        312979
+      ]
+    }
+  },
+  "source_sha256": {
+    "Model.py": "66bf131decb3b6cc527c92209dcb4a55d38648ea55ca7e6ac4cf70b1f316c033",
+    "Augmentation.py": "a880882304d3fb6ea80781b3c116e669a4581562210e0ef756c463cff26ba787",
+    "extension_experiments/run.py": "494edbd05616ee58fc4aff7a741eb75e072e03ec12b8ddf88c2c85d32581de75",
+    "extension_experiments/efficiency_B/train_e3.py": "b2a728e3039e5648ecd66ac56d9f9afa28ae329debf49179d1fe951fd6908161",
+    "extension_experiments/efficiency_B/model_b1.py": "d53ce118759c4761ff03f54960cd316045a661d96294d87ff79727aaa2b72dab",
+    "extension_experiments/efficiency_B/model_b2.py": "e759db29243e26ba6bc5e22cfe85bc8fac98ec93edc63af72d9f27ef1d24d368",
+    "extension_experiments/efficiency_B/diagnose_e3_parity_control.py": "66d2d5095b76683136f6e3c2c20cf7cc30586285a7d0e9bb38036450da0e6227"
+  },
+  "warning": "Fixed-view training deliberately changes augmentation. The condition is diagnostic only and must not be used as a formal quality or speed result. Every phase is CUDA-synchronized and changes execution overhead."
+}

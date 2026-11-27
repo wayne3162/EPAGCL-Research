@@ -21,7 +21,9 @@ def get_args():
     parser.add_argument('--not_drop_edge', action="store_true")
     parser.add_argument('--add_single', action='store_true')
     parser.add_argument('--add_edge_random', action="store_true")
+    parser.add_argument('--random_drop_edge', action="store_true")
     parser.add_argument('--batch_compute', action="store_true")
+    parser.add_argument('--not_drop_feature_random', action="store_true")
 
     # optimizer
     parser.add_argument('--optim', type=str, default='Adam')
